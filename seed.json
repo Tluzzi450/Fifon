@@ -1,0 +1,1642 @@
+{
+ "app": "paternidad-fifa",
+ "version": 1,
+ "partidos": [
+  {
+   "id": "p001",
+   "creado": "2026-01-01T00:00:01Z",
+   "equipoCabe": "AEK Atenas",
+   "equipoVerga": "Celta de vigo",
+   "fifa": 25,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "Mezcla",
+   "n": 1,
+   "penales": false
+  },
+  {
+   "id": "p002",
+   "creado": "2026-01-01T00:00:02Z",
+   "equipoCabe": "Chelsea",
+   "equipoVerga": "Aston Villa",
+   "fifa": 25,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 0,
+   "liga": "Inglesa",
+   "n": 2,
+   "penales": false
+  },
+  {
+   "id": "p003",
+   "creado": "2026-01-01T00:00:03Z",
+   "equipoCabe": "Liverpool",
+   "equipoVerga": "Manchester City",
+   "fifa": 25,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 0,
+   "liga": "Inglesa",
+   "n": 3,
+   "penales": false
+  },
+  {
+   "id": "p004",
+   "creado": "2026-01-01T00:00:04Z",
+   "equipoCabe": "Lazio",
+   "equipoVerga": "Roma",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [
+    "Dobvik"
+   ],
+   "golesCabe": 0,
+   "golesVerga": 1,
+   "liga": "Italiana",
+   "n": 4,
+   "penales": false
+  },
+  {
+   "id": "p005",
+   "creado": "2026-01-01T00:00:05Z",
+   "equipoCabe": "Cagliari",
+   "equipoVerga": "Udinese",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [
+    "Ekkelempkamp",
+    "Ekkelempkamp",
+    "Ekkelempkamp"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 4,
+   "liga": "Italiana",
+   "n": 5,
+   "penales": false
+  },
+  {
+   "id": "p006",
+   "creado": "2026-01-01T00:00:06Z",
+   "equipoCabe": "Bundesliga XI",
+   "equipoVerga": "Juventus XI",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Muller",
+    "Muller",
+    "Muller",
+    "Ze Roberto",
+    "Tevez",
+    "Vieira",
+    "Del Piero"
+   ],
+   "golesCabe": 4,
+   "golesVerga": 3,
+   "liga": "Clásicos",
+   "n": 6,
+   "penales": false
+  },
+  {
+   "id": "p007",
+   "creado": "2026-01-01T00:00:07Z",
+   "equipoCabe": "Liverpool XI",
+   "equipoVerga": "Chelsea XI",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Palmer",
+    "Niño"
+   ],
+   "golesCabe": 1,
+   "golesVerga": 1,
+   "liga": "Clásicos",
+   "n": 7,
+   "penales": true
+  },
+  {
+   "id": "p008",
+   "creado": "2026-01-01T00:00:08Z",
+   "equipoCabe": "Laliga XI",
+   "equipoVerga": "Italiana XI",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Hierro",
+    "Raul",
+    "Figo",
+    "Kaka",
+    "El Diegote"
+   ],
+   "golesCabe": 3,
+   "golesVerga": 2,
+   "liga": "Clásicos",
+   "n": 8,
+   "penales": false
+  },
+  {
+   "id": "p009",
+   "creado": "2026-01-01T00:00:09Z",
+   "equipoCabe": "Inglaterra",
+   "equipoVerga": "España",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Saka",
+    "Saka",
+    "Kane",
+    "Rashford",
+    "Rashford",
+    "Oyarzabal"
+   ],
+   "golesCabe": 5,
+   "golesVerga": 1,
+   "liga": "Selecciones",
+   "n": 9,
+   "penales": false
+  },
+  {
+   "id": "p010",
+   "creado": "2026-01-01T00:00:10Z",
+   "equipoCabe": "Suecia",
+   "equipoVerga": "Noruega",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Gyokeres",
+    "Gyokeres",
+    "Gyokeres",
+    "Gyokeres",
+    "Gyokeres",
+    "Gyokeres",
+    "Sorloth",
+    "Sorloth"
+   ],
+   "golesCabe": 8,
+   "golesVerga": 3,
+   "liga": "Selecciones",
+   "n": 10,
+   "penales": false
+  },
+  {
+   "id": "p011",
+   "creado": "2026-01-01T00:00:11Z",
+   "equipoCabe": "Platense",
+   "equipoVerga": "Tigre",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Saborido",
+    "Lopez",
+    "Cabrera",
+    "Miguel"
+   ],
+   "golesCabe": 1,
+   "golesVerga": 3,
+   "liga": "Argentina",
+   "n": 11,
+   "penales": false
+  },
+  {
+   "id": "p012",
+   "creado": "2026-01-01T00:00:12Z",
+   "equipoCabe": "Racing",
+   "equipoVerga": "Central",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Maravilla"
+   ],
+   "golesCabe": 1,
+   "golesVerga": 0,
+   "liga": "Argentina",
+   "n": 12,
+   "penales": false
+  },
+  {
+   "id": "p013",
+   "creado": "2026-01-01T00:00:13Z",
+   "equipoCabe": "Belgrano",
+   "equipoVerga": "Newells",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Pipa",
+    "Zelarayan"
+   ],
+   "golesCabe": 1,
+   "golesVerga": 1,
+   "liga": "Argentina",
+   "n": 13,
+   "penales": true
+  },
+  {
+   "id": "p014",
+   "creado": "2026-01-01T00:00:14Z",
+   "equipoCabe": "Stuttgard",
+   "equipoVerga": "Frankfurt",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 4,
+   "golesVerga": 2,
+   "liga": "Alemana",
+   "n": 14,
+   "penales": false
+  },
+  {
+   "id": "p015",
+   "creado": "2026-01-01T00:00:15Z",
+   "equipoCabe": "Mainz",
+   "equipoVerga": "Wolfsburgo",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Hollerback",
+    "Hollerback",
+    "Hollerback",
+    "Hollerback"
+   ],
+   "golesCabe": 6,
+   "golesVerga": 0,
+   "liga": "Alemana",
+   "n": 15,
+   "penales": false
+  },
+  {
+   "id": "p016",
+   "creado": "2026-01-01T00:00:16Z",
+   "equipoCabe": "Atletico madrid",
+   "equipoVerga": "Real Madrid",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Barrios",
+    "Julian",
+    "Bellingham"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "Española",
+   "n": 16,
+   "penales": false
+  },
+  {
+   "id": "p017",
+   "creado": "2026-01-01T00:00:17Z",
+   "equipoCabe": "Roma",
+   "equipoVerga": "Napoli",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Dybala",
+    "Ferguson",
+    "Mc Tominay",
+    "Hojlund",
+    "Hojlund"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 3,
+   "liga": "Italiana",
+   "n": 17,
+   "penales": false
+  },
+  {
+   "id": "p018",
+   "creado": "2026-01-01T00:00:18Z",
+   "equipoCabe": "Tottenham",
+   "equipoVerga": "Manchester united",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Kudus",
+    "Kudus"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 0,
+   "liga": "Inglesa",
+   "n": 18,
+   "penales": false
+  },
+  {
+   "id": "p019",
+   "creado": "2026-01-01T00:00:19Z",
+   "equipoCabe": "Fiorentina",
+   "equipoVerga": "Como",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Doubikas",
+    "Doubikas"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 6,
+   "liga": "Italiana",
+   "n": 19,
+   "penales": false
+  },
+  {
+   "id": "p020",
+   "creado": "2026-01-01T00:00:20Z",
+   "equipoCabe": "Borussia",
+   "equipoVerga": "Juventus",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Dusan",
+    "Dusan"
+   ],
+   "golesCabe": 4,
+   "golesVerga": 7,
+   "liga": "Mezcla",
+   "n": 20,
+   "penales": false
+  },
+  {
+   "id": "p021",
+   "creado": "2026-01-01T00:00:21Z",
+   "equipoCabe": "Milan",
+   "equipoVerga": "Chelsea",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Joao Pedro",
+    "Joao Pedro"
+   ],
+   "golesCabe": 1,
+   "golesVerga": 6,
+   "liga": "Mezcla",
+   "n": 21,
+   "penales": false
+  },
+  {
+   "id": "p022",
+   "creado": "2026-01-01T00:00:22Z",
+   "equipoCabe": "Arsenal",
+   "equipoVerga": "Manchester City",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Gyokeres",
+    "Gyokeres",
+    "Trossard",
+    "Trossard",
+    "Reijnders"
+   ],
+   "golesCabe": 4,
+   "golesVerga": 1,
+   "liga": "Inglesa",
+   "n": 22,
+   "penales": false
+  },
+  {
+   "id": "p023",
+   "creado": "2026-01-01T00:00:23Z",
+   "equipoCabe": "Benfica",
+   "equipoVerga": "Porto",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "Portuguesa",
+   "n": 23,
+   "penales": false
+  },
+  {
+   "id": "p024",
+   "creado": "2026-01-01T00:00:24Z",
+   "equipoCabe": "Almería",
+   "equipoVerga": "La Coruña",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 1,
+   "liga": "2da Española",
+   "n": 24,
+   "penales": true
+  },
+  {
+   "id": "p025",
+   "creado": "2026-01-01T00:00:25Z",
+   "equipoCabe": "Francia",
+   "equipoVerga": "Inglaterra",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 3,
+   "liga": "Femenino",
+   "n": 25,
+   "penales": false
+  },
+  {
+   "id": "p026",
+   "creado": "2026-01-01T00:00:26Z",
+   "equipoCabe": "Manchester City",
+   "equipoVerga": "PSG",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Foden",
+    "Foden",
+    "Vitinha"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "Mezcla",
+   "n": 26,
+   "penales": false
+  },
+  {
+   "id": "p027",
+   "creado": "2026-01-01T00:00:27Z",
+   "equipoCabe": "Alemania",
+   "equipoVerga": "Holanda",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Woltemade",
+    "Woltemade",
+    "Gakpo"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "Selecciones",
+   "n": 27,
+   "penales": false
+  },
+  {
+   "id": "p028",
+   "creado": "2026-01-01T00:00:28Z",
+   "equipoCabe": "Tachira",
+   "equipoVerga": "Carabobo",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Cova",
+    "Cova",
+    "Cova",
+    "Cano",
+    "Cano"
+   ],
+   "golesCabe": 6,
+   "golesVerga": 0,
+   "liga": "Libertadores",
+   "n": 28,
+   "penales": false
+  },
+  {
+   "id": "p029",
+   "creado": "2026-01-01T00:00:29Z",
+   "equipoCabe": "Celtic",
+   "equipoVerga": "Niza",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 4,
+   "golesVerga": 3,
+   "liga": "Mezcla",
+   "n": 29,
+   "penales": false
+  },
+  {
+   "id": "p030",
+   "creado": "2026-01-01T00:00:30Z",
+   "equipoCabe": "Peñarol",
+   "equipoVerga": "IDV",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "Libertadores",
+   "n": 30,
+   "penales": false
+  },
+  {
+   "id": "p031",
+   "creado": "2026-01-01T00:00:31Z",
+   "equipoCabe": "Cienciano",
+   "equipoVerga": "U Española",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 4,
+   "golesVerga": 2,
+   "liga": "Sudamericana",
+   "n": 31,
+   "penales": false
+  },
+  {
+   "id": "p032",
+   "creado": "2026-01-01T00:00:32Z",
+   "equipoCabe": "Wolves",
+   "equipoVerga": "Brentford",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 5,
+   "liga": "Inglesa",
+   "n": 32,
+   "penales": false
+  },
+  {
+   "id": "p033",
+   "creado": "2026-01-01T00:00:33Z",
+   "equipoCabe": "Belgrano",
+   "equipoVerga": "Newells",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 2,
+   "liga": "Argentina",
+   "n": 33,
+   "penales": false
+  },
+  {
+   "id": "p034",
+   "creado": "2026-01-01T00:00:34Z",
+   "equipoCabe": "Hungría",
+   "equipoVerga": "Irlanda",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 2,
+   "liga": "Selecciones",
+   "n": 34,
+   "penales": true
+  },
+  {
+   "id": "p035",
+   "creado": "2026-01-01T00:00:35Z",
+   "equipoCabe": "Caykur",
+   "equipoVerga": "Hatyspor",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [
+    "Standberg",
+    "Standberg"
+   ],
+   "golesCabe": 0,
+   "golesVerga": 2,
+   "liga": "Turca",
+   "n": 35,
+   "penales": false
+  },
+  {
+   "id": "p036",
+   "creado": "2026-01-01T00:00:36Z",
+   "equipoCabe": "Sao Paulo",
+   "equipoVerga": "Nacional",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Vilela",
+    "Vilela",
+    "Vilela"
+   ],
+   "golesCabe": 5,
+   "golesVerga": 3,
+   "liga": "Libertadores",
+   "n": 36,
+   "penales": false
+  },
+  {
+   "id": "p037",
+   "creado": "2026-01-01T00:00:37Z",
+   "equipoCabe": "Bayern",
+   "equipoVerga": "PSG",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Kvaradona",
+    "Kvaradona",
+    "Kvaradona",
+    "Dembele",
+    "Dembele"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 8,
+   "liga": "Mezcla",
+   "n": 37,
+   "penales": false
+  },
+  {
+   "id": "p038",
+   "creado": "2026-01-01T00:00:38Z",
+   "equipoCabe": "Arsenal",
+   "equipoVerga": "Atletico madrid",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Eberechi Eze",
+    "Eberechi Eze"
+   ],
+   "golesCabe": 3,
+   "golesVerga": 2,
+   "liga": "Mezcla",
+   "n": 38,
+   "penales": false
+  },
+  {
+   "id": "p039",
+   "creado": "2026-01-01T00:00:39Z",
+   "equipoCabe": "Celta de vigo",
+   "equipoVerga": "Friburgo",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Grifo",
+    "Grifo"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 3,
+   "liga": "Mezcla",
+   "n": 39,
+   "penales": false
+  },
+  {
+   "id": "p040",
+   "creado": "2026-01-01T00:00:40Z",
+   "equipoCabe": "Aldosivi",
+   "equipoVerga": "Newells",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Colo Ramirez",
+    "Colo Ramirez",
+    "Colo Ramirez",
+    "El Teban Rolon",
+    "El Teban Rolon"
+   ],
+   "golesCabe": 3,
+   "golesVerga": 6,
+   "liga": "Argentina",
+   "n": 40,
+   "penales": false
+  },
+  {
+   "id": "p041",
+   "creado": "2026-01-01T00:00:41Z",
+   "equipoCabe": "River",
+   "equipoVerga": "Boca",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 0,
+   "golesVerga": 3,
+   "liga": "Argentina",
+   "n": 41,
+   "penales": false
+  },
+  {
+   "id": "p042",
+   "creado": "2026-01-01T00:00:42Z",
+   "equipoCabe": "Lens",
+   "equipoVerga": "Rennes",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Meite",
+    "Meite",
+    "Meite"
+   ],
+   "golesCabe": 4,
+   "golesVerga": 5,
+   "liga": "Francia",
+   "n": 42,
+   "penales": false
+  },
+  {
+   "id": "p043",
+   "creado": "2026-01-01T00:00:43Z",
+   "equipoCabe": "Sarmiento",
+   "equipoVerga": "Central Cordoba",
+   "fifa": 25,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 0,
+   "liga": "Argentina",
+   "n": 43,
+   "penales": false
+  },
+  {
+   "id": "p044",
+   "creado": "2026-01-01T00:00:44Z",
+   "equipoCabe": "Newcastle",
+   "equipoVerga": "Manchester united",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [
+    "Hojlund",
+    "Hojlund"
+   ],
+   "golesCabe": 1,
+   "golesVerga": 3,
+   "liga": "Inglesa",
+   "n": 44,
+   "penales": false
+  },
+  {
+   "id": "p045",
+   "creado": "2026-01-01T00:00:45Z",
+   "equipoCabe": "Racing Ferrol",
+   "equipoVerga": "Eldense",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 1,
+   "liga": "2da Española",
+   "n": 45,
+   "penales": true
+  },
+  {
+   "id": "p046",
+   "creado": "2026-01-01T00:00:46Z",
+   "equipoCabe": "Sampdoria",
+   "equipoVerga": "Cremonese",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [
+    "Barbieri",
+    "Barbieri",
+    "Barbieri"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 3,
+   "liga": "2da Italiana",
+   "n": 46,
+   "penales": false
+  },
+  {
+   "id": "p047",
+   "creado": "2026-01-01T00:00:47Z",
+   "equipoCabe": "Inglaterra",
+   "equipoVerga": "Alemania",
+   "fifa": 25,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Bellingham",
+    "Bellingham",
+    "Bellingham",
+    "Kane",
+    "Kane",
+    "Kane",
+    "Kimmich",
+    "Kimmich"
+   ],
+   "golesCabe": 7,
+   "golesVerga": 6,
+   "liga": "Selecciones",
+   "n": 47,
+   "penales": false
+  },
+  {
+   "id": "p048",
+   "creado": "2026-01-01T00:00:48Z",
+   "equipoCabe": "Borussia M",
+   "equipoVerga": "Wolfsburgo",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 0,
+   "golesVerga": 1,
+   "liga": "Alemana",
+   "n": 48,
+   "penales": false
+  },
+  {
+   "id": "p049",
+   "creado": "2026-01-01T00:00:49Z",
+   "equipoCabe": "Croacia",
+   "equipoVerga": "Checa",
+   "fifa": 25,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 3,
+   "golesVerga": 1,
+   "liga": "Selecciones",
+   "n": 49,
+   "penales": false
+  },
+  {
+   "id": "p050",
+   "creado": "2026-01-01T00:00:50Z",
+   "equipoCabe": "Huracan",
+   "equipoVerga": "Platense",
+   "fifa": 25,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 2,
+   "liga": "Argentina",
+   "n": 50,
+   "penales": false
+  },
+  {
+   "id": "p051",
+   "creado": "2026-01-01T00:00:51Z",
+   "equipoCabe": "Olympiacos",
+   "equipoVerga": "Slavia Praga",
+   "fifa": 25,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "Mezcla",
+   "n": 51,
+   "penales": false
+  },
+  {
+   "id": "p052",
+   "creado": "2026-01-01T00:00:52Z",
+   "equipoCabe": "Paraguay",
+   "equipoVerga": "Congo",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 3,
+   "liga": "Selecciones",
+   "n": 52,
+   "penales": false
+  },
+  {
+   "id": "p053",
+   "creado": "2026-01-01T00:00:53Z",
+   "equipoCabe": "Cabo Verde",
+   "equipoVerga": "Curazao",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 3,
+   "golesVerga": 2,
+   "liga": "Selecciones",
+   "n": 53,
+   "penales": false
+  },
+  {
+   "id": "p054",
+   "creado": "2026-01-01T00:00:54Z",
+   "equipoCabe": "Colombia",
+   "equipoVerga": "Italia",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 3,
+   "golesVerga": 4,
+   "liga": "Selecciones",
+   "n": 54,
+   "penales": false
+  },
+  {
+   "id": "p055",
+   "creado": "2026-01-01T00:00:55Z",
+   "equipoCabe": "Marruecos",
+   "equipoVerga": "Senegal",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Jackson",
+    "Jackson",
+    "Jackson",
+    "Saibari",
+    "Saibari"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 4,
+   "liga": "Selecciones",
+   "n": 55,
+   "penales": false
+  },
+  {
+   "id": "p056",
+   "creado": "2026-01-01T00:00:56Z",
+   "equipoCabe": "Tigre",
+   "equipoVerga": "Gimnasia",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 0,
+   "golesVerga": 2,
+   "liga": "Argentina",
+   "n": 56,
+   "penales": false
+  },
+  {
+   "id": "p057",
+   "creado": "2026-01-01T00:00:57Z",
+   "equipoCabe": "Newells",
+   "equipoVerga": "Godoy Cruz",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 2,
+   "liga": "Argentina",
+   "n": 57,
+   "penales": true
+  },
+  {
+   "id": "p058",
+   "creado": "2026-01-01T00:00:58Z",
+   "equipoCabe": "Defensa",
+   "equipoVerga": "Instituto",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Botta",
+    "Botta"
+   ],
+   "golesCabe": 3,
+   "golesVerga": 2,
+   "liga": "Argentina",
+   "n": 58,
+   "penales": false
+  },
+  {
+   "id": "p059",
+   "creado": "2026-01-01T00:00:59Z",
+   "equipoCabe": "Espanyol",
+   "equipoVerga": "Girona",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 2,
+   "liga": "Española",
+   "n": 59,
+   "penales": false
+  },
+  {
+   "id": "p060",
+   "creado": "2026-01-01T00:01:00Z",
+   "equipoCabe": "Leganes",
+   "equipoVerga": "Ceuta",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 4,
+   "liga": "2da Española",
+   "n": 60,
+   "penales": false
+  },
+  {
+   "id": "p061",
+   "creado": "2026-01-01T00:01:01Z",
+   "equipoCabe": "Bournemouth",
+   "equipoVerga": "Sunderland",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "Inglesa",
+   "n": 61,
+   "penales": false
+  },
+  {
+   "id": "p062",
+   "creado": "2026-01-01T00:01:02Z",
+   "equipoCabe": "Wolves",
+   "equipoVerga": "Everton",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [
+    "Ndiaye",
+    "Ndiaye",
+    "Mcneil",
+    "Mcneil",
+    "Mcneil"
+   ],
+   "golesCabe": 2,
+   "golesVerga": 8,
+   "liga": "Inglesa",
+   "n": 62,
+   "penales": false
+  },
+  {
+   "id": "p063",
+   "creado": "2026-01-01T00:01:03Z",
+   "equipoCabe": "West Ham",
+   "equipoVerga": "Fulham",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 3,
+   "golesVerga": 0,
+   "liga": "Inglesa",
+   "n": 63,
+   "penales": false
+  },
+  {
+   "id": "p064",
+   "creado": "2026-01-01T00:01:04Z",
+   "equipoCabe": "Besiktas",
+   "equipoVerga": "Trabzonspor",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [
+    "Tele",
+    "Tele",
+    "Tele",
+    "Tele"
+   ],
+   "golesCabe": 5,
+   "golesVerga": 0,
+   "liga": "Turca",
+   "n": 64,
+   "penales": false
+  },
+  {
+   "id": "p065",
+   "creado": "2026-01-01T00:01:05Z",
+   "equipoCabe": "St. Pauli",
+   "equipoVerga": "Heidenheim",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 0,
+   "liga": "Alemana",
+   "n": 65,
+   "penales": false
+  },
+  {
+   "id": "p066",
+   "creado": "2026-01-01T00:01:06Z",
+   "equipoCabe": "Hamburgo",
+   "equipoVerga": "Augsburgo",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 3,
+   "golesVerga": 4,
+   "liga": "Alemana",
+   "n": 66,
+   "penales": false
+  },
+  {
+   "id": "p067",
+   "creado": "2026-01-01T00:01:07Z",
+   "equipoCabe": "Leverkusen",
+   "equipoVerga": "Dortmund",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 3,
+   "golesVerga": 5,
+   "liga": "Alemana",
+   "n": 67,
+   "penales": false
+  },
+  {
+   "id": "p068",
+   "creado": "2026-01-01T00:01:08Z",
+   "equipoCabe": "Napoli",
+   "equipoVerga": "Milan",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 1,
+   "golesVerga": 2,
+   "liga": "Italiana",
+   "n": 68,
+   "penales": false
+  },
+  {
+   "id": "p069",
+   "creado": "2026-01-01T00:01:09Z",
+   "equipoCabe": "Hellas Verona",
+   "equipoVerga": "Genoa",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 3,
+   "golesVerga": 1,
+   "liga": "Italiana",
+   "n": 69,
+   "penales": false
+  },
+  {
+   "id": "p070",
+   "creado": "2026-01-01T00:01:10Z",
+   "equipoCabe": "Frosinone",
+   "equipoVerga": "Mantova",
+   "fifa": 26,
+   "ganador": "Cabe",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 1,
+   "liga": "2da Italiana",
+   "n": 70,
+   "penales": false
+  },
+  {
+   "id": "p071",
+   "creado": "2026-01-01T00:01:11Z",
+   "equipoCabe": "Italiana XI",
+   "equipoVerga": "Laliga XI",
+   "fifa": 26,
+   "ganador": "Verga",
+   "goleadores": [],
+   "golesCabe": 2,
+   "golesVerga": 3,
+   "liga": "Clásicos",
+   "n": 71,
+   "penales": false
+  }
+ ],
+ "equipos": {
+  "aek-atenas": {
+   "nombre": "AEK Atenas",
+   "apodo": "Dikéfalos (Águila bicéfala) · Kitrinómavri (Aurinegros)"
+  },
+  "aldosivi": {
+   "nombre": "Aldosivi",
+   "apodo": "El Tiburón"
+  },
+  "alemania": {
+   "nombre": "Alemania",
+   "apodo": "Die Mannschaft"
+  },
+  "almeria": {
+   "nombre": "Almería",
+   "apodo": "Los Indálicos · Rojiblancos"
+  },
+  "arsenal": {
+   "nombre": "Arsenal",
+   "apodo": "The Gunners (Los Artilleros)"
+  },
+  "aston-villa": {
+   "nombre": "Aston Villa",
+   "apodo": "The Villans · The Lions"
+  },
+  "atletico-madrid": {
+   "nombre": "Atletico madrid",
+   "apodo": "Los Colchoneros"
+  },
+  "augsburgo": {
+   "nombre": "Augsburgo",
+   "apodo": "Fuggerstädter"
+  },
+  "bayern": {
+   "nombre": "Bayern",
+   "apodo": "Die Roten (Los Rojos) · Los Bávaros"
+  },
+  "belgrano": {
+   "nombre": "Belgrano",
+   "apodo": "El Pirata"
+  },
+  "benfica": {
+   "nombre": "Benfica",
+   "apodo": "As Águias (Las Águilas) · Encarnados"
+  },
+  "besiktas": {
+   "nombre": "Besiktas",
+   "apodo": "Kara Kartallar (Las Águilas Negras)"
+  },
+  "boca": {
+   "nombre": "Boca",
+   "apodo": "Xeneize"
+  },
+  "borussia": {
+   "nombre": "Borussia",
+   "apodo": "Die Schwarzgelben (Los Aurinegros)"
+  },
+  "borussia-m": {
+   "nombre": "Borussia M",
+   "apodo": "Die Fohlen (Los Potros)"
+  },
+  "bournemouth": {
+   "nombre": "Bournemouth",
+   "apodo": "The Cherries"
+  },
+  "brentford": {
+   "nombre": "Brentford",
+   "apodo": "The Bees (Las Abejas)"
+  },
+  "bundesliga-xi": {
+   "nombre": "Bundesliga XI",
+   "apodo": "",
+   "nota": "Combinado de estrellas: no tiene apodo oficial."
+  },
+  "cabo-verde": {
+   "nombre": "Cabo Verde",
+   "apodo": "Tubarões Azuis (Tiburones Azules)"
+  },
+  "cagliari": {
+   "nombre": "Cagliari",
+   "apodo": "Rossoblù · Isolani"
+  },
+  "carabobo": {
+   "nombre": "Carabobo",
+   "apodo": "Los Granates · La Vinotinto Regional"
+  },
+  "caykur": {
+   "nombre": "Caykur",
+   "apodo": "Karadeniz Atmacası (Gavilán del Mar Negro)"
+  },
+  "celta-de-vigo": {
+   "nombre": "Celta de vigo",
+   "apodo": "Os Celestes (Los Celestes)"
+  },
+  "celtic": {
+   "nombre": "Celtic",
+   "apodo": "The Bhoys · The Hoops"
+  },
+  "central": {
+   "nombre": "Central",
+   "apodo": "El Canalla"
+  },
+  "central-cordoba": {
+   "nombre": "Central Cordoba",
+   "apodo": "El Ferroviario"
+  },
+  "ceuta": {
+   "nombre": "Ceuta",
+   "apodo": "Los Caballas"
+  },
+  "checa": {
+   "nombre": "Checa",
+   "apodo": "Repre (Los Representantes)"
+  },
+  "chelsea": {
+   "nombre": "Chelsea",
+   "apodo": "The Blues"
+  },
+  "chelsea-xi": {
+   "nombre": "Chelsea XI",
+   "apodo": "",
+   "nota": "Combinado de estrellas: no tiene apodo oficial."
+  },
+  "cienciano": {
+   "nombre": "Cienciano",
+   "apodo": "El Papá · Rojo Imperial"
+  },
+  "colombia": {
+   "nombre": "Colombia",
+   "apodo": "Los Cafeteros"
+  },
+  "como": {
+   "nombre": "Como",
+   "apodo": "I Lariani"
+  },
+  "congo": {
+   "nombre": "Congo",
+   "apodo": "Los Leopardos (RD Congo)"
+  },
+  "cremonese": {
+   "nombre": "Cremonese",
+   "apodo": "I Grigiorossi (Los Grisrojos)"
+  },
+  "croacia": {
+   "nombre": "Croacia",
+   "apodo": "Vatreni (Los Ardientes)"
+  },
+  "curazao": {
+   "nombre": "Curazao",
+   "apodo": "The Blue Wave (La Ola Azul)"
+  },
+  "defensa": {
+   "nombre": "Defensa",
+   "apodo": "El Halcón"
+  },
+  "dortmund": {
+   "nombre": "Dortmund",
+   "apodo": "Die Schwarzgelben (Los Aurinegros)"
+  },
+  "eldense": {
+   "nombre": "Eldense",
+   "apodo": "Deportivo Azulgrana · Decano"
+  },
+  "espana": {
+   "nombre": "España",
+   "apodo": "La Roja"
+  },
+  "espanyol": {
+   "nombre": "Espanyol",
+   "apodo": "Los Periquitos"
+  },
+  "everton": {
+   "nombre": "Everton",
+   "apodo": "The Toffees"
+  },
+  "fiorentina": {
+   "nombre": "Fiorentina",
+   "apodo": "La Viola"
+  },
+  "francia": {
+   "nombre": "Francia",
+   "apodo": "Les Bleus"
+  },
+  "frankfurt": {
+   "nombre": "Frankfurt",
+   "apodo": "Die Adler (Las Águilas)"
+  },
+  "friburgo": {
+   "nombre": "Friburgo",
+   "apodo": "Breisgau-Brasilianer (Los Brasileños de Breisgau)"
+  },
+  "frosinone": {
+   "nombre": "Frosinone",
+   "apodo": "I Canarini (Los Canarios) · Ciociari"
+  },
+  "fulham": {
+   "nombre": "Fulham",
+   "apodo": "The Cottagers"
+  },
+  "genoa": {
+   "nombre": "Genoa",
+   "apodo": "Il Grifone (El Grifo)"
+  },
+  "gimnasia": {
+   "nombre": "Gimnasia",
+   "apodo": "El Lobo"
+  },
+  "girona": {
+   "nombre": "Girona",
+   "apodo": "Blanquivermells"
+  },
+  "godoy-cruz": {
+   "nombre": "Godoy Cruz",
+   "apodo": "El Tomba · El Bodeguero"
+  },
+  "hamburgo": {
+   "nombre": "Hamburgo",
+   "apodo": "Die Rothosen (Los Pantalones Rojos)"
+  },
+  "hatyspor": {
+   "nombre": "Hatyspor",
+   "apodo": "Güneyin Yıldızı (Estrella del Sur)"
+  },
+  "heidenheim": {
+   "nombre": "Heidenheim",
+   "apodo": "FCH"
+  },
+  "hellas-verona": {
+   "nombre": "Hellas Verona",
+   "apodo": "Gialloblù · I Mastini (Los Mastines)"
+  },
+  "holanda": {
+   "nombre": "Holanda",
+   "apodo": "Oranje · La Naranja Mecánica"
+  },
+  "hungria": {
+   "nombre": "Hungría",
+   "apodo": "Magyarok (Los Magiares)"
+  },
+  "huracan": {
+   "nombre": "Huracan",
+   "apodo": "El Globo"
+  },
+  "idv": {
+   "nombre": "IDV",
+   "apodo": "Los Rayados del Valle"
+  },
+  "inglaterra": {
+   "nombre": "Inglaterra",
+   "apodo": "The Three Lions (Los Tres Leones)"
+  },
+  "instituto": {
+   "nombre": "Instituto",
+   "apodo": "La Gloria"
+  },
+  "irlanda": {
+   "nombre": "Irlanda",
+   "apodo": "The Boys in Green"
+  },
+  "italia": {
+   "nombre": "Italia",
+   "apodo": "Gli Azzurri · La Azzurra"
+  },
+  "italiana-xi": {
+   "nombre": "Italiana XI",
+   "apodo": "",
+   "nota": "Combinado de estrellas: no tiene apodo oficial."
+  },
+  "juventus": {
+   "nombre": "Juventus",
+   "apodo": "La Vecchia Signora (La Vieja Señora) · Bianconeri"
+  },
+  "juventus-xi": {
+   "nombre": "Juventus XI",
+   "apodo": "",
+   "nota": "Combinado de estrellas: no tiene apodo oficial."
+  },
+  "la-coruna": {
+   "nombre": "La Coruña",
+   "apodo": "Dépor · Turcos · Blanquiazules"
+  },
+  "laliga-xi": {
+   "nombre": "Laliga XI",
+   "apodo": "",
+   "nota": "Combinado de estrellas: no tiene apodo oficial."
+  },
+  "lazio": {
+   "nombre": "Lazio",
+   "apodo": "Biancocelesti · Le Aquile (Las Águilas)"
+  },
+  "leganes": {
+   "nombre": "Leganes",
+   "apodo": "Los Pepineros"
+  },
+  "lens": {
+   "nombre": "Lens",
+   "apodo": "Les Sang et Or (Sangre y Oro)"
+  },
+  "leverkusen": {
+   "nombre": "Leverkusen",
+   "apodo": "Die Werkself (Los de la Fábrica)"
+  },
+  "liverpool": {
+   "nombre": "Liverpool",
+   "apodo": "The Reds"
+  },
+  "liverpool-xi": {
+   "nombre": "Liverpool XI",
+   "apodo": "",
+   "nota": "Combinado de estrellas: no tiene apodo oficial."
+  },
+  "mainz": {
+   "nombre": "Mainz",
+   "apodo": "Die Nullfünfer (Los 05)"
+  },
+  "manchester-city": {
+   "nombre": "Manchester City",
+   "apodo": "The Citizens · Sky Blues"
+  },
+  "manchester-united": {
+   "nombre": "Manchester united",
+   "apodo": "Red Devils (Diablos Rojos)"
+  },
+  "mantova": {
+   "nombre": "Mantova",
+   "apodo": "I Virgiliani · Biancorossi"
+  },
+  "marruecos": {
+   "nombre": "Marruecos",
+   "apodo": "Los Leones del Atlas"
+  },
+  "milan": {
+   "nombre": "Milan",
+   "apodo": "Rossoneri · Il Diavolo"
+  },
+  "nacional": {
+   "nombre": "Nacional",
+   "apodo": "El Bolso · Tricolor"
+  },
+  "napoli": {
+   "nombre": "Napoli",
+   "apodo": "Partenopei · Azzurri"
+  },
+  "newcastle": {
+   "nombre": "Newcastle",
+   "apodo": "The Magpies (Las Urracas)"
+  },
+  "newells": {
+   "nombre": "Newells",
+   "apodo": "La Lepra"
+  },
+  "niza": {
+   "nombre": "Niza",
+   "apodo": "Les Aiglons (Los Aguiluchos)"
+  },
+  "noruega": {
+   "nombre": "Noruega",
+   "apodo": "Landslaget · Drillos"
+  },
+  "olympiacos": {
+   "nombre": "Olympiacos",
+   "apodo": "Thrylos (La Leyenda)"
+  },
+  "paraguay": {
+   "nombre": "Paraguay",
+   "apodo": "La Albirroja"
+  },
+  "penarol": {
+   "nombre": "Peñarol",
+   "apodo": "Manyas · Carboneros"
+  },
+  "platense": {
+   "nombre": "Platense",
+   "apodo": "El Calamar"
+  },
+  "porto": {
+   "nombre": "Porto",
+   "apodo": "Dragões (Los Dragones)"
+  },
+  "psg": {
+   "nombre": "PSG",
+   "apodo": "Les Parisiens"
+  },
+  "racing": {
+   "nombre": "Racing",
+   "apodo": "La Academia"
+  },
+  "racing-ferrol": {
+   "nombre": "Racing Ferrol",
+   "apodo": "Diablos Verdes · Departamentales"
+  },
+  "real-madrid": {
+   "nombre": "Real Madrid",
+   "apodo": "Los Merengues · Los Blancos"
+  },
+  "rennes": {
+   "nombre": "Rennes",
+   "apodo": "Les Rouge et Noir (Rojinegros)"
+  },
+  "river": {
+   "nombre": "River",
+   "apodo": "El Millonario"
+  },
+  "roma": {
+   "nombre": "Roma",
+   "apodo": "La Loba · Giallorossi"
+  },
+  "sampdoria": {
+   "nombre": "Sampdoria",
+   "apodo": "Blucerchiati"
+  },
+  "sao-paulo": {
+   "nombre": "Sao Paulo",
+   "apodo": "Tricolor Paulista"
+  },
+  "sarmiento": {
+   "nombre": "Sarmiento",
+   "apodo": "El Verde"
+  },
+  "senegal": {
+   "nombre": "Senegal",
+   "apodo": "Los Leones de la Teranga"
+  },
+  "slavia-praga": {
+   "nombre": "Slavia Praga",
+   "apodo": "Sešívaní (Los Cosidos)"
+  },
+  "st-pauli": {
+   "nombre": "St. Pauli",
+   "apodo": "Kiezkicker · Freibeuter der Liga (Bucaneros de la Liga)"
+  },
+  "stuttgard": {
+   "nombre": "Stuttgard",
+   "apodo": "Die Schwaben (Los Suabos)"
+  },
+  "suecia": {
+   "nombre": "Suecia",
+   "apodo": "Blågult (Azul y Amarillo)"
+  },
+  "sunderland": {
+   "nombre": "Sunderland",
+   "apodo": "The Black Cats"
+  },
+  "tachira": {
+   "nombre": "Tachira",
+   "apodo": "Carrusel Aurinegro · Atigrados"
+  },
+  "tigre": {
+   "nombre": "Tigre",
+   "apodo": "El Matador"
+  },
+  "tottenham": {
+   "nombre": "Tottenham",
+   "apodo": "Spurs"
+  },
+  "trabzonspor": {
+   "nombre": "Trabzonspor",
+   "apodo": "Karadeniz Fırtınası (Tormenta del Mar Negro)"
+  },
+  "u-espanola": {
+   "nombre": "U Española",
+   "apodo": "Los Hispanos · Rojos de Santa Laura"
+  },
+  "udinese": {
+   "nombre": "Udinese",
+   "apodo": "Friulani · Zebrette"
+  },
+  "west-ham": {
+   "nombre": "West Ham",
+   "apodo": "The Hammers · The Irons"
+  },
+  "wolfsburgo": {
+   "nombre": "Wolfsburgo",
+   "apodo": "Die Wölfe (Los Lobos)"
+  },
+  "wolves": {
+   "nombre": "Wolves",
+   "apodo": "Wolves · Wanderers"
+  }
+ },
+ "escudos": {}
+}

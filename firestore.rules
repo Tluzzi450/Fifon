@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Solo estas dos cuentas de Google pueden ver y cargar partidos (en minúsculas).
+    function esJugador() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in [
+          'email.de.cabe@gmail.com',
+          'email.de.verga@gmail.com'
+        ];
+    }
+
+    match /series/{serie} {
+      allow read, write: if esJugador();
+      match /{document=**} {
+        allow read, write: if esJugador();
+      }
+    }
+  }
+}
