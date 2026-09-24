@@ -1,5 +1,5 @@
 /* Service worker de Paternidad FIFA: la app abre sin conexión y se actualiza sola. */
-const VERSION = "pf-2026.09.24-0051";
+const VERSION = "pf-2026.09.24-0058";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "seed.json", "logo.png",
   "icon-192.png", "icon-512.png", "maskable-512.png", "apple-touch-icon.png", "favicon-32.png"];
 
