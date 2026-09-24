@@ -357,7 +357,7 @@ body.locked .tabs, body.locked [data-view-panel]{display:none!important}
   .brand h1{font-size:21px;letter-spacing:.04em}
   .brand p{font-size:11.5px;margin-top:4px}
   .top-r{width:100%;justify-content:space-between}
-  .live{font-size:11px;padding:4px 8px;letter-spacing:.1em}
+  .live{display:none}
   .tab{padding:11px 7px 10px;font-size:12px;letter-spacing:.04em}
   .pair .donut-center small{font-size:8.5px;letter-spacing:.06em}
   .pair .donut-center b{font-size:22px}
@@ -369,6 +369,26 @@ body.locked .tabs, body.locked [data-view-panel]{display:none!important}
   .pair .sub{font-size:11.5px;margin-bottom:6px}
   .psub{font-size:12px}
 }
+/* Movimientos */
+.loglist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.lg{display:grid;grid-template-columns:34px 1fr auto;gap:4px 12px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--surface)}
+.lg:last-child{border-bottom:0}
+.lg .ic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:13px;grid-row:span 2}
+.lg .ic.alta{background:rgba(46,229,157,.16);color:var(--grass)}
+.lg .ic.edicion{background:rgba(233,196,106,.16);color:var(--gold)}
+.lg .ic.baja{background:rgba(255,107,107,.16);color:var(--bad)}
+.lg .ic.escudo,.lg .ic.apodo,.lg .ic.importacion{background:rgba(59,140,242,.16);color:var(--cabe-2)}
+.lg .tx{font-size:14px;line-height:1.35}
+.lg .who{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.lg .when{font-family:var(--display);font-size:12px;color:var(--ink-2);text-align:right;white-space:nowrap;grid-row:span 2;letter-spacing:.04em}
+.lg-day{font-family:var(--display);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:8px 12px;background:var(--surface-3);border-bottom:1px solid var(--line)}
+/* Indicador de versión */
+.ver{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-2);background:var(--surface);border-radius:3px;padding:5px 10px;font-family:var(--display);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);cursor:pointer;min-height:30px}
+.ver i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.ver[data-state="ok"] i{background:var(--grass);box-shadow:0 0 8px var(--grass)}
+.ver[data-state="old"]{border-color:var(--bad);color:var(--ink)}
+.ver[data-state="old"] i{background:var(--bad);box-shadow:0 0 8px var(--bad);animation:blink 1.2s ease-in-out infinite}
+.ver[data-state="busy"] i{background:var(--gold)}
 /* Modal + toast */
 .overlay{position:fixed;inset:0;background:rgba(2,6,5,.75);display:flex;align-items:flex-start;justify-content:center;padding:32px 16px;z-index:50;overflow-y:auto}
 .overlay .panel{width:100%;max-width:820px;background:var(--surface)}
@@ -410,7 +430,7 @@ try {
         <p><span class="dot c"></span>Cabe <span style="color:var(--muted)">vs</span> Verga<span class="dot v"></span></p>
       </div>
     </div>
-    <div class="top-r"><button class="btn sm install-btn" type="button" id="installBtn" hidden><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M11 3h2v9.2l3.3-3.3 1.4 1.4L12 16l-5.7-5.7 1.4-1.4 3.3 3.3zM5 18h14v2H5z"/></svg>Instalar app</button><div class="live"><i></i><span id="liveTxt">Serie en juego</span></div><div class="who-chip" id="whoChip" hidden><span class="dot c" style="background:var(--gold)"></span><span id="whoName"></span><button class="btn ghost" type="button" id="whoOut">Salir</button></div></div>
+    <div class="top-r"><button class="ver" type="button" id="verBtn" hidden data-state="off"><i></i><span id="verTxt">Versión</span></button><button class="btn sm install-btn" type="button" id="installBtn" hidden><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M11 3h2v9.2l3.3-3.3 1.4 1.4L12 16l-5.7-5.7 1.4-1.4 3.3 3.3zM5 18h14v2H5z"/></svg>Instalar app</button><div class="live"><i></i><span id="liveTxt">Serie en juego</span></div><div class="who-chip" id="whoChip" hidden><span class="dot c" style="background:var(--gold)"></span><span id="whoName"></span><button class="btn ghost" type="button" id="whoOut">Salir</button></div></div>
   </header>
 
   <nav class="tabs" aria-label="Secciones">
@@ -419,6 +439,7 @@ try {
       <button class="tab" role="tab" id="tab-load" aria-selected="false" data-view="load">Cargar</button>
       <button class="tab" role="tab" id="tab-list" aria-selected="false" data-view="list">Partidos <span class="count" id="count"></span></button>
       <button class="tab" role="tab" id="tab-crest" aria-selected="false" data-view="crest">Escudos</button>
+      <button class="tab" role="tab" id="tab-log" aria-selected="false" data-view="log">Movimientos</button>
     </div>
   </nav>
 
@@ -596,6 +617,20 @@ try {
     </div>
   </section>
 
+  <!-- MOVIMIENTOS -->
+  <section id="view-log" data-view-panel="log" hidden>
+    <div class="hud panel">
+      <div class="panel-head">
+        <div>
+          <h2>Movimientos</h2>
+          <p>Todo lo que se carga, edita o borra en la app, con quién lo hizo y cuándo. Se registra a partir de esta versión.</p>
+        </div>
+      </div>
+      <div class="filters" id="logFilter" style="margin-bottom:12px"></div>
+      <div class="loglist" id="logList"></div>
+    </div>
+  </section>
+
   <!-- ESCUDOS -->
   <section id="view-crest" data-view-panel="crest" hidden>
     <div class="hud panel">
@@ -672,7 +707,7 @@ async function claudeStore(db){
   let assets = null, dl = null;
   try { assets = await window.claude.use("assets"); } catch(e){}
   try { dl = await window.claude.use("downloads"); } catch(e){}
-  const P = db.collection("partidos"), E = db.collection("escudos"), T = db.collection("equipos");
+  const P = db.collection("partidos"), E = db.collection("escudos"), T = db.collection("equipos"), L = db.collection("movimientos");
   let crestIds = {};
   return {
     kind:"claude", canCrest: !!assets, canDownload: !!dl, canFile: true,
@@ -692,14 +727,16 @@ async function claudeStore(db){
       if (prev && prev !== r.id) { try { await assets.delete(prev); } catch(e){} }
     },
     async delCrest(s){ const id = crestIds[s]; await E.doc(s).delete(); if (id) { try { await assets.delete(id); } catch(e){} } },
-    async download(filename, text){ if (dl) return dl.save({filename, data:new Blob([text], {type:"application/json"})}); throw {code:"unavailable"}; }
+    async download(filename, text){ if (dl) return dl.save({filename, data:new Blob([text], {type:"application/json"})}); throw {code:"unavailable"}; },
+    log: e => L.add(e),
+    subscribeLog(cb){ L.orderBy("cuando", "desc").limit(300).onSnapshot(s => cb(s.docs.map(d => ({id:d.id, ...d.data()}))), () => {}); }
   };
 }
 
 function idbOpen(){
   return new Promise((res, rej) => {
-    const r = indexedDB.open("paternidad-fifa", 1);
-    r.onupgradeneeded = () => { const d = r.result; ["partidos","escudos","equipos","meta"].forEach(n => { if (!d.objectStoreNames.contains(n)) d.createObjectStore(n); }); };
+    const r = indexedDB.open("paternidad-fifa", 2);
+    r.onupgradeneeded = () => { const d = r.result; ["partidos","escudos","equipos","meta","movimientos"].forEach(n => { if (!d.objectStoreNames.contains(n)) d.createObjectStore(n); }); };
     r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
   });
 }
@@ -728,6 +765,8 @@ async function localStore(){
   const emitM = async () => { const o = await idbAll(db, "partidos"); cb.m && cb.m(Object.entries(o).map(([id, d]) => ({id, ...d}))); };
   const emitC = async () => { const o = await idbAll(db, "escudos"); const r = {}; Object.entries(o).forEach(([s, x]) => { if (x && x.src) r[s] = x; }); cb.c && cb.c(r); };
   const emitT = async () => { cb.t && cb.t(await idbAll(db, "equipos")); };
+  let logCb = null;
+  const emitL = async () => { if (!logCb) return; const o = await idbAll(db, "movimientos"); logCb(Object.entries(o).map(([id, d]) => ({id, ...d})).sort((a,b) => String(b.cuando).localeCompare(String(a.cuando))).slice(0, 300)); };
   return {
     kind:"local", canCrest:true, canDownload:true, canFile:true,
     subscribe(onM, onC, onT){ cb = {m:onM, c:onC, t:onT}; emitM(); emitC(); emitT(); },
@@ -737,7 +776,9 @@ async function localStore(){
     async setTeam(s, d){ await idbPut(db, "equipos", s, d); await emitT(); },
     async saveCrest(s, name, blob){ await idbPut(db, "escudos", s, {equipo:name, src:await blobToDataURL(blob)}); await emitC(); },
     async delCrest(s){ await idbDel(db, "escudos", s); await emitC(); },
-    async download(filename, text){ saveViaAnchor(filename, text); }
+    async download(filename, text){ saveViaAnchor(filename, text); },
+    async log(e){ await idbPut(db, "movimientos", newId(), e); await emitL(); },
+    subscribeLog(cb){ logCb = cb; emitL(); }
   };
 }
 
@@ -799,7 +840,7 @@ async function firebaseStore(cfg){
   const fs = firebase.firestore();
   try { await fs.enablePersistence({synchronizeTabs:true}); } catch(e){}
   const root = fs.collection("series").doc(cfg.serie || "principal");
-  const P = root.collection("partidos"), E = root.collection("escudos"), T = root.collection("equipos");
+  const P = root.collection("partidos"), E = root.collection("escudos"), T = root.collection("equipos"), L = root.collection("movimientos");
   let meta;
   try { meta = await root.get(); }
   catch(e){ if ((e.code||"").includes("permission")) { showDenied(me.email); throw {code:"denied"}; } throw e; }
@@ -827,7 +868,9 @@ async function firebaseStore(cfg){
     setTeam: (s, d) => T.doc(s).set(d),
     async saveCrest(s, name, blob){ await E.doc(s).set({equipo:name, src:await blobToDataURL(blob)}); },
     delCrest: s => E.doc(s).delete(),
-    async download(filename, text){ saveViaAnchor(filename, text); }
+    async download(filename, text){ saveViaAnchor(filename, text); },
+    log: e => L.add(e),
+    subscribeLog(cb){ L.orderBy("cuando", "desc").limit(300).onSnapshot(s => cb(s.docs.map(d => ({id:d.id, ...d.data()}))), () => {}); }
   };
 }
 
@@ -855,7 +898,17 @@ function previewStore(){
     subscribe(a,b,c){ cb = {m:a,c:b,t:c}; emit(); },
     async addMatch(x){ data.m.push({id:newId(), ...x}); emit(); }, async setMatch(id,x){ data.m = data.m.map(m=>m.id===id?{id,...x}:m); emit(); },
     async delMatch(id){ data.m = data.m.filter(m=>m.id!==id); emit(); }, async setTeam(s,x){ data.t[s]=x; emit(); },
-    async saveCrest(){}, async delCrest(){}, async download(){} };
+    async saveCrest(){}, async delCrest(){}, async download(){},
+    async log(e){ (data.l = data.l || []).unshift({id:newId(), ...e}); this._lc && this._lc(data.l.slice()); },
+    subscribeLog(cb){ this._lc = cb; cb((data.l || []).slice()); } };
+}
+
+/* ---------- Registro de movimientos ---------- */
+const matchTxt = m => `#${m.n}: ${m.equipoCabe} ${m.golesCabe}-${m.golesVerga} ${m.equipoVerga}${m.penales ? ` (pen. ${m.ganador})` : ""} · FIFA ${m.fifa}`;
+function record(tipo, texto, extra){
+  if (!store || !store.log) return;
+  const e = {tipo, texto, cuando: new Date().toISOString(), quien: store.user ? store.user.email : "", ...(extra || {})};
+  Promise.resolve(store.log(e)).catch(() => {});
 }
 
 /* ---------- Tabs ---------- */
@@ -867,6 +920,7 @@ function setView(v){
   if (v === "dash") renderDash();
   if (v === "list") renderList();
   if (v === "crest") renderCrests();
+  if (v === "log") renderLog();
 }
 $$(".tab").forEach(t => t.addEventListener("click", () => setView(t.dataset.view)));
 
@@ -1167,7 +1221,7 @@ $("#saveRows").addEventListener("click", async () => {
   const btn = $("#saveRows"); btn.disabled = true; $("#saveHint").textContent = "Guardando…";
   let n = nextN(), ok = 0; const now = new Date().toISOString();
   try {
-    for (const d of data) { await store.addMatch({...d, n: n++, creado: now, ...(store.user ? {cargadoPor: store.user.email} : {})}); ok++; }
+    for (const d of data) { const nn = n++; await store.addMatch({...d, n: nn, creado: now, ...(store.user ? {cargadoPor: store.user.email} : {})}); ok++; record("alta", "Cargó el partido " + matchTxt({...d, n: nn}), {n: nn}); }
     toast(ok === 1 ? "Partido guardado" : `${ok} partidos guardados`);
     const keep = data[data.length-1];
     $("#rows").innerHTML = ""; const r = rowEditor({}, {fifa:keep.fifa, liga:keep.liga}); $("#rows").appendChild(r); numberRows();
@@ -1248,7 +1302,7 @@ $("#tbody").addEventListener("click", async e => {
   }
   if (e.target.closest("[data-no]")) return renderList();
   if (e.target.closest("[data-yes]")) {
-    try { await store.delMatch(m.id); toast(`Partido #${m.n} borrado`); } catch(err) { toast("No se pudo borrar. Probá de nuevo."); renderList(); }
+    try { await store.delMatch(m.id); record("baja", "Borró el partido " + matchTxt(m), {n: m.n}); toast(`Partido #${m.n} borrado`); } catch(err) { toast("No se pudo borrar. Probá de nuevo."); renderList(); }
     return;
   }
   if (e.target.closest(".confirm")) return;
@@ -1266,6 +1320,16 @@ function modal(html){
   $(".overlay", host).addEventListener("click", e => { if (e.target.classList.contains("overlay")) close(); });
   return {host, close};
 }
+function describeChanges(a, b){
+  const ch = [];
+  if (a.golesCabe !== b.golesCabe || a.golesVerga !== b.golesVerga) ch.push(`resultado antes ${a.golesCabe}-${a.golesVerga}`);
+  if (norm(a.equipoCabe) !== norm(b.equipoCabe) || norm(a.equipoVerga) !== norm(b.equipoVerga)) ch.push(`equipos antes ${a.equipoCabe} vs ${a.equipoVerga}`);
+  if (a.liga !== b.liga) ch.push(`liga antes ${a.liga}`);
+  if (a.fifa !== b.fifa) ch.push(`antes FIFA ${a.fifa}`);
+  if (scorersToText(a.goleadores) !== scorersToText(b.goleadores)) ch.push("cambió goleadores");
+  if (a.n !== b.n) ch.push(`antes era el #${a.n}`);
+  return ch.length ? ` (${ch.join("; ")})` : "";
+}
 function openEdit(m){
   const {host, close} = modal(`
     <div class="panel-head"><div><h2>Editar partido #${m.n}</h2><p>Cambiá lo que necesites y guardá.</p></div><button class="btn ghost" type="button" data-close>Cerrar</button></div>
@@ -1275,7 +1339,7 @@ function openEdit(m){
   $("[data-save]", host).addEventListener("click", async () => {
     const d = r.read(); if (!d) return;
     const n = Math.max(1, parseInt($("#editN", host).value, 10) || m.n);
-    try { await store.setMatch(m.id, {...d, n, creado:m.creado || new Date().toISOString(), editado:new Date().toISOString(), ...(m.cargadoPor ? {cargadoPor:m.cargadoPor} : {}), ...(store.user ? {editadoPor: store.user.email} : {})}); toast(`Partido #${n} actualizado`); close(); }
+    try { await store.setMatch(m.id, {...d, n, creado:m.creado || new Date().toISOString(), editado:new Date().toISOString(), ...(m.cargadoPor ? {cargadoPor:m.cargadoPor} : {}), ...(store.user ? {editadoPor: store.user.email} : {})}); record("edicion", "Editó el partido " + matchTxt({...d, n}) + describeChanges(m, {...d, n}), {n}); toast(`Partido #${n} actualizado`); close(); }
     catch(err){ toast("No se pudo guardar el cambio."); }
   });
 }
@@ -1355,20 +1419,20 @@ function openTeam(name){
   const apSave = $("#apSave", host);
   if (apSave) apSave.addEventListener("click", async () => {
     const v = norm($("#apIn", host).value);
-    try { await store.setTeam(s, {...info, nombre: info.nombre || name, apodo: v}); toast("Apodo guardado"); close(); openTeam(name); }
+    try { await store.setTeam(s, {...info, nombre: info.nombre || name, apodo: v}); record("apodo", `Cambió el apodo de ${name}: “${v || "(sin apodo)"}”`); toast("Apodo guardado"); close(); openTeam(name); }
     catch(e){ toast("No se pudo guardar el apodo."); }
   });
   const crIn = $("#crIn", host);
   if (crIn) crIn.addEventListener("change", async () => {
     const f = crIn.files[0]; if (!f) return;
     $("#crHint", host).textContent = "Subiendo…";
-    try { let blob; try { blob = await toPng(f); } catch(e) { blob = f; } await store.saveCrest(s, name, blob); toast(`Escudo de ${name} actualizado`); close(); setTimeout(() => openTeam(name), 300); }
+    try { let blob; try { blob = await toPng(f); } catch(e) { blob = f; } await store.saveCrest(s, name, blob); record("escudo", `Subió el escudo de ${name}`); toast(`Escudo de ${name} actualizado`); close(); setTimeout(() => openTeam(name), 300); }
     catch(err){ const c = err && err.code; $("#crHint", host).textContent = c === "too_large" ? "La imagen es demasiado pesada." : c === "unsupported_type" ? "Formato no admitido: usá PNG, JPG, WEBP o SVG." : "No se pudo subir el escudo."; }
   });
   const crDel = $("#crDel", host);
   if (crDel) crDel.addEventListener("click", async () => {
     if (!crDel.dataset.sure) { crDel.dataset.sure = "1"; crDel.textContent = "¿Seguro? Quitar"; return; }
-    try { await store.delCrest(s); toast(`Escudo de ${name} quitado`); close(); } catch(e){ toast("No se pudo quitar el escudo."); }
+    try { await store.delCrest(s); record("escudo", `Quitó el escudo de ${name}`); toast(`Escudo de ${name} quitado`); close(); } catch(e){ toast("No se pudo quitar el escudo."); }
   });
 }
 function toPng(file){
@@ -1424,7 +1488,7 @@ $("#importIn").addEventListener("change", async e => {
         try { await store.saveCrest(s, c.equipo || s, await dataURLToBlob(c.src)); } catch(err){ if (err && err.code === "rate_limited") { await sleep(2500); try { await store.saveCrest(s, c.equipo || s, await dataURLToBlob(c.src)); } catch(e2){} } }
         tick(`Escudo: ${c.equipo || s}`);
       }
-      toast("Respaldo importado"); close();
+      record("importacion", `Importó un respaldo: ${data.partidos.length} partidos, ${nT} apodos y ${nE} escudos`); toast("Respaldo importado"); close();
     } catch(err){ $("#impTxt", host).textContent = "Se cortó la importación. Podés volver a intentarlo: lo ya importado no se duplica."; go.disabled = false; }
   });
 });
@@ -1465,6 +1529,74 @@ function onData(list){
 let rT; function rerenderSoon(){ clearTimeout(rT); rT = setTimeout(() => { renderDash(); renderList(); renderCrests(); }, 60); }
 function onCrests(o){ crests = o || {}; rerenderSoon(); }
 function onTeams(o){ teams = o || {}; rerenderSoon(); }
+
+/* ---------- Pestaña Movimientos ---------- */
+let logItems = [], logSel = "todos";
+const LOG_GROUPS = {todos:["Todos",null], partidos:["Partidos",["alta","edicion","baja"]], equipos:["Escudos y apodos",["escudo","apodo"]], otros:["Respaldos",["importacion"]]};
+const LOG_ICON = {alta:"+", edicion:"✎", baja:"−", escudo:"◆", apodo:"“", importacion:"⇩"};
+function whenTxt(iso){
+  const d = new Date(iso); if (isNaN(d)) return "";
+  const mins = Math.round((Date.now() - d.getTime()) / 60000);
+  if (mins < 1) return "recién";
+  if (mins < 60) return `hace ${mins} min`;
+  return d.toLocaleTimeString("es-AR", {hour:"2-digit", minute:"2-digit"});
+}
+function dayTxt(iso){
+  const d = new Date(iso); if (isNaN(d)) return "";
+  const t = new Date(); const y = new Date(); y.setDate(t.getDate() - 1);
+  if (d.toDateString() === t.toDateString()) return "Hoy";
+  if (d.toDateString() === y.toDateString()) return "Ayer";
+  return d.toLocaleDateString("es-AR", {weekday:"long", day:"numeric", month:"long"});
+}
+function renderLog(){
+  if (view !== "log") return;
+  $("#logFilter").innerHTML = Object.entries(LOG_GROUPS).map(([k,[l]]) => `<button class="chip" type="button" data-g="${k}" aria-pressed="${logSel===k}">${l}</button>`).join("");
+  $$("#logFilter .chip").forEach(b => b.addEventListener("click", () => { logSel = b.dataset.g; renderLog(); }));
+  const g = LOG_GROUPS[logSel][1];
+  const L = logItems.filter(x => !g || g.includes(x.tipo));
+  if (!L.length) { $("#logList").innerHTML = `<p class="empty">${logItems.length ? "No hay movimientos de este tipo." : "Todavía no hay movimientos. Desde ahora queda registrado cada partido que se carga, edita o borra, y cada cambio de escudo o apodo."}</p>`; return; }
+  let lastDay = null, html = "";
+  L.forEach(x => {
+    const day = dayTxt(x.cuando);
+    if (day !== lastDay) { html += `<div class="lg-day">${esc(day)}</div>`; lastDay = day; }
+    const who = x.quien ? playerName(x.quien) : "Este dispositivo";
+    html += `<div class="lg"><span class="ic ${esc(x.tipo)}" aria-hidden="true">${LOG_ICON[x.tipo] || "•"}</span><span class="tx">${esc(x.texto)}</span><span class="when">${esc(whenTxt(x.cuando))}</span><span class="who">${esc(who)}</span></div>`;
+  });
+  $("#logList").innerHTML = html;
+}
+setInterval(() => { if (view === "log") renderLog(); }, 60000);
+
+/* ---------- Indicador de versión (verde = al día, rojo = hay versión nueva) ---------- */
+const APP_VERSION = "2026.09.24-0038";
+function setupVersion(){
+  if (!window.PF_STANDALONE) return;
+  const b = $("#verBtn"); b.hidden = false;
+  const set = (st, txt, title) => { b.dataset.state = st; $("#verTxt").textContent = txt; b.title = title; b.setAttribute("aria-label", title); };
+  let latest = null;
+  async function check(){
+    try {
+      const r = await fetch("version.json?t=" + Date.now(), {cache:"no-store"});
+      if (!r.ok) throw 0;
+      latest = (await r.json()).version;
+      if (latest && latest !== APP_VERSION) set("old", "Actualizar", `Hay una versión nueva (${latest}). Tocá para actualizar.`);
+      else set("ok", "Al día", `Tenés la última versión (${APP_VERSION}).`);
+    } catch(e) { if (b.dataset.state !== "old") set("off", "Sin conexión", "No se pudo comprobar si hay versión nueva."); }
+  }
+  window.addEventListener("pf-update-ready", () => set("old", "Actualizar", "Hay una versión nueva descargada. Tocá para actualizar."));
+  b.addEventListener("click", async () => {
+    if (b.dataset.state === "old") {
+      set("busy", "Actualizando…", "Actualizando la app");
+      try {
+        if ("serviceWorker" in navigator) { const reg = await navigator.serviceWorker.getRegistration(); if (reg) { try { await reg.update(); } catch(e){} } }
+        if (window.caches) { const ks = await caches.keys(); await Promise.all(ks.map(k => caches.delete(k))); }
+      } catch(e){}
+      location.reload();
+    } else { set("busy", "Revisando…", "Buscando versión nueva"); await check(); toast(b.dataset.state === "ok" ? `Tenés la última versión (${APP_VERSION})` : b.dataset.state === "old" ? "Hay una versión nueva: tocá el botón rojo para actualizar" : "Sin conexión: no se pudo revisar"); }
+  });
+  check();
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") check(); });
+  setInterval(check, 5 * 60 * 1000);
+}
 
 /* ---------- Instalar como app (celular y escritorio) ---------- */
 function setupInstall(){
@@ -1519,7 +1651,7 @@ function showMode(){
 (function(){ const r = rowEditor({}, {}); $("#rows").appendChild(r); numberRows(); })();
 try { const v = localStorage.getItem("pf-view"); if (v && v !== "dash" && $(`[data-view="${v}"]`)) setView(v); } catch(e){}
 (async () => {
-  setupInstall(); showMode();
+  setupInstall(); showMode(); setupVersion();
   document.body.classList.add("locked");
   try { store = await pickStore(); }
   catch(e) {
@@ -1535,6 +1667,7 @@ try { const v = localStorage.getItem("pf-view"); if (v && v !== "dash" && $(`[da
   if (!store.canFile) { $(".datazone").hidden = true; }
   const fail = () => { const s = $("#status"); s.hidden = false; s.classList.add("err"); s.textContent = "Se perdió la conexión con la base. Recargá la página."; };
   store.subscribe(onData, onCrests, onTeams, fail);
+  if (store.subscribeLog) store.subscribeLog(items => { logItems = items || []; renderLog(); });
 })();
 })();
 </script>
@@ -1550,11 +1683,7 @@ if ("serviceWorker" in navigator) {
   });
   navigator.serviceWorker.addEventListener("controllerchange", function(){
     if (!hadCtl) { hadCtl = true; return; }
-    if (document.querySelector(".updbar")) return;
-    var b = document.createElement("div"); b.className = "updbar"; b.setAttribute("role", "status");
-    b.innerHTML = '<span>Hay una versión nueva de la app.</span><button class="btn primary sm" type="button">Actualizar</button>';
-    b.querySelector("button").addEventListener("click", function(){ location.reload(); });
-    document.body.appendChild(b);
+    window.dispatchEvent(new Event("pf-update-ready"));
   });
 }
 </script>

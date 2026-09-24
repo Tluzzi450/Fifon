@@ -61,9 +61,9 @@ Para sumar o cambiar a alguien más adelante, editá la lista de emails en las r
 
 ## Cómo llegan las actualizaciones
 
-- **Datos:** cuando uno carga, edita o borra un partido, el otro lo ve en segundos, sin recargar, y le aparece un aviso ("Verga cargó el partido #72: …"). Si alguien carga sin internet, se sincroniza cuando vuelve la conexión.
-- **Cambios en la app:** si modificás archivos en GitHub, subí también el número de `VERSION` en `sw.js` (por ejemplo `pf-v4`). Al abrir la app aparece "Hay una versión nueva → Actualizar".
-- Los avisos aparecen con la app abierta. Las notificaciones push con la app cerrada requieren un servidor aparte (Firebase Cloud Functions, plan pago) y no están incluidas.
+- **Datos:** cuando uno carga, edita o borra un partido, el otro lo ve en segundos, sin recargar, y le aparece un aviso ("Verga cargó el partido #72: …"). Todo queda anotado en la pestaña **Movimientos**, con quién lo hizo y cuándo.
+- **Versión de la app:** arriba hay un indicador. **Verde "Al día"** significa que tenés la última versión. **Rojo "Actualizar"** significa que hay una versión nueva en GitHub: tocalo y la app se actualiza sola. Cuando subas una versión nueva, subí **todos** los archivos, incluido `version.json`; así el indicador se pone rojo en los celulares.
+- Los avisos aparecen con la app abierta. Las notificaciones push con la app cerrada requieren un servidor aparte y no están incluidas.
 
 ## Sin Firebase
 
@@ -76,7 +76,8 @@ index.html            App completa (incluye los gráficos y el logo)
 config.js             Conexión a Firebase y Gmail de los jugadores
 firestore.rules       Reglas de seguridad (pegar en Firebase)
 manifest.webmanifest  Datos de instalación (nombre, íconos, colores)
-sw.js                 Modo sin conexión y aviso de versión nueva
+sw.js                 Modo sin conexión
+version.json          Número de versión (para el indicador verde/rojo)
 seed.json             Partidos y apodos precargados
 logo.png, icon-*.png, maskable-512.png, apple-touch-icon.png, favicon-32.png   Íconos
 ```

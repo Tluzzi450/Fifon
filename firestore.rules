@@ -7,8 +7,8 @@ service cloud.firestore {
       return request.auth != null
         && request.auth.token.email_verified == true
         && request.auth.token.email in [
-          'email.de.cabe@gmail.com',
-          'email.de.verga@gmail.com'
+          'nahuellopepe2903@gmail.com',
+          'tluzzi450@alumnos.frh.utn.edu.ar'
         ];
     }
 
