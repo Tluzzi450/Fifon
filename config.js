@@ -4,7 +4,7 @@
        'nahuellopepe2903@gmail.com': "Cabe",
        'tluzzi450@alumnos.frh.utn.edu.ar': "Verga"
      },
-   const firebaseConfig = {
+   config: {
   apiKey: "AIzaSyCEpmDe0hhhWSwxK9JAcYMMtLOVCCBpvtY",
   authDomain: "app-fifa-8ed3a.firebaseapp.com",
   projectId: "app-fifa-8ed3a",
@@ -12,4 +12,4 @@
   messagingSenderId: "981585234295",
   appId: "1:981585234295:web:5298498765c46dfca2f972",
   measurementId: "G-X0692DKQW1"
-}
+};
