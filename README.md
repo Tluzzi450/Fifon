@@ -28,11 +28,15 @@ Abrí `config.js` y reemplazá la línea `window.PF_FIREBASE = null;` por el blo
 ## Paso 3 · Subir a GitHub y publicar
 
 1. En <https://github.com> → **New repository** → nombre `paternidad-fifa` → **Public** → **Create repository**.
-   GitHub Pages gratis requiere repo público. No hay riesgo: los datos no están en el repo sino en Firebase, protegidos por las reglas y el login de Google.
-2. En la página del repo vacío tocá **uploading an existing file**. Arrastrá **todo el contenido de esta carpeta** (los archivos y las carpetas `icons`, `data` y `vendor`, no la carpeta que los contiene) y tocá **Commit changes**.
+2. En el repo tocá **Add file → Upload files**, seleccioná **todos los archivos del zip** (son archivos sueltos, no hay carpetas) y tocá **Commit changes**.
+   Si ya habías editado `config.js` en GitHub, no lo vuelvas a subir: dejalo afuera de la selección.
 3. **Settings → Pages → Build and deployment**: en *Source* elegí **Deploy from a branch**, en *Branch* elegí `main` y `/ (root)`, y tocá **Save**.
 4. En 1 o 2 minutos aparece el link: `https://TU_USUARIO.github.io/paternidad-fifa/`.
 5. **Autorizar el sitio en Firebase (obligatorio para Google):** Authentication → **Configuración → Dominios autorizados → Agregar dominio** → `TU_USUARIO.github.io` (sin `https://` ni barra final).
+
+La app avisa arriba si falta algo:
+- *"Modo sin conexión con Google"*: `config.js` sigue vacío (`null`), así que falta el Paso 2.
+- *"El archivo config.js tiene un error"*: falta una comilla, una coma o una llave. También podés pegar tal cual el bloque `const firebaseConfig = {...}` que te da Firebase: la app lo entiende.
 
 ## Paso 4 · Entrar y cargar los escudos
 
@@ -43,9 +47,9 @@ Abrí `config.js` y reemplazá la línea `window.PF_FIREBASE = null;` por el blo
 
 1. Asegurate de que su Gmail esté en `firestore.rules` (publicado en Firebase) y en `config.js`.
 2. Mandale el link por WhatsApp. Él toca **Entrar con Google**, elige su cuenta y listo: no tiene que registrarse.
-3. Para instalarla en el celular:
-   - **Android (Chrome):** menú ⋮ → **Instalar app** o **Agregar a la pantalla principal**.
-   - **iPhone (Safari):** botón Compartir → **Agregar a pantalla de inicio**. En iPhone, la app instalada tiene su propia sesión: al abrirla por primera vez hay que tocar **Entrar con Google** de nuevo.
+3. Para instalarla, tocá el botón dorado **Instalar app** (arriba a la derecha):
+   - **Android y computadora (Chrome o Edge):** se instala directo, con ícono propio y ventana propia. En la PC queda en el escritorio y en el menú Inicio.
+   - **iPhone:** el botón muestra los pasos (Compartir → **Agregar a pantalla de inicio**). La app instalada tiene su propia sesión: la primera vez hay que tocar **Entrar con Google** de nuevo.
 
 Para sumar o cambiar a alguien más adelante, editá la lista de emails en las reglas de Firestore y publicá. No hace falta tocar GitHub, salvo para cambiar el nombre que aparece en los avisos.
 
@@ -58,24 +62,23 @@ Para sumar o cambiar a alguien más adelante, editá la lista de emails en las r
 ## Cómo llegan las actualizaciones
 
 - **Datos:** cuando uno carga, edita o borra un partido, el otro lo ve en segundos, sin recargar, y le aparece un aviso ("Verga cargó el partido #72: …"). Si alguien carga sin internet, se sincroniza cuando vuelve la conexión.
-- **Cambios en la app:** si modificás archivos en GitHub, subí también el número de `VERSION` en `sw.js` (por ejemplo `pf-v3`). Al abrir la app aparece "Hay una versión nueva → Actualizar".
+- **Cambios en la app:** si modificás archivos en GitHub, subí también el número de `VERSION` en `sw.js` (por ejemplo `pf-v4`). Al abrir la app aparece "Hay una versión nueva → Actualizar".
 - Los avisos aparecen con la app abierta. Las notificaciones push con la app cerrada requieren un servidor aparte (Firebase Cloud Functions, plan pago) y no están incluidas.
 
 ## Sin Firebase
 
 Si dejás `window.PF_FIREBASE = null;`, la app funciona igual pero cada teléfono guarda su propia copia (sin login). Para pasar datos de uno a otro, usá **Exportar / Importar respaldo**.
 
-## Estructura
+## Estructura (todo en la raíz, sin carpetas)
 
 ```
-index.html            App completa
-config.js             Conexión a Firebase y emails de los jugadores
+index.html            App completa (incluye los gráficos y el logo)
+config.js             Conexión a Firebase y Gmail de los jugadores
 firestore.rules       Reglas de seguridad (pegar en Firebase)
 manifest.webmanifest  Datos de instalación (nombre, íconos, colores)
 sw.js                 Modo sin conexión y aviso de versión nueva
-data/seed.json        Partidos y apodos precargados
-icons/                Logo e íconos
-vendor/chart.umd.js   Chart.js 4.4.1 (licencia MIT)
+seed.json             Partidos y apodos precargados
+logo.png, icon-*.png, maskable-512.png, apple-touch-icon.png, favicon-32.png   Íconos
 ```
 
 Uso esperado dentro del plan gratuito de Firebase: sobra. Cada vez que se abre la app lee unos 300 documentos y el límite es de 50.000 por día.
