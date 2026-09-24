@@ -32,7 +32,7 @@
   --display:"Chakra Petch","Arial Narrow",system-ui,sans-serif;
   --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
-html{font-size:clamp(16px, calc(0.5vw + 10px), 22px)}
+html{font-size:clamp(16px, calc(0.5vw + 10px), 28px)}
 *{box-sizing:border-box}
 html,body{background:var(--ground)}
 body{
@@ -43,7 +43,7 @@ body{
     radial-gradient(56.25rem 26.25rem at 88% -140px, rgba(255,244,214,.07), transparent 70%),
     radial-gradient(87.5rem 37.5rem at 50% 110%, rgba(18,90,58,.25), transparent 70%);
 }
-.wrap{max-width:105rem;margin:0 auto}
+.wrap{max-width:150rem;margin:0 auto}
 button,input,select{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--grass);outline-offset:2px}
 .dot{width:0.68rem;height:0.68rem;border-radius:2px;display:inline-block;flex:none;transform:rotate(45deg)}
@@ -130,6 +130,7 @@ button,input,select{font:inherit;color:inherit}
 .kpi .v .sep{color:var(--muted);font-weight:500}
 .kpi .v .mini{display:inline-flex;align-items:center;gap:0.375rem}
 .kpi .n{font-size:0.8125rem;color:var(--ink-2);margin-top:0.1875rem}
+@media (min-width:761px) and (max-width:1100px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.kpis .tvbug{grid-column:1 / -1;order:-1}}
 @media (max-width:760px){.kpis .tvbug{grid-column:1 / -1;order:-1}.kpis > .kpi:nth-child(3){grid-column:1 / -1}.kpis{grid-template-columns:1fr 1fr}.kpis .kpi .v{font-size:1.3125rem}}
 
 /* Card grid */
@@ -228,7 +229,7 @@ button,input,select{font:inherit;color:inherit}
 .ph.sg{width:1.75rem;height:2.25rem}
 .ph.md{width:3.25rem;height:4.25rem;border-radius:0.3125rem;font-size:0.9375rem}
 .pn{flex:1;min-width:0;display:flex;flex-direction:column;gap:0.4375rem}
-.pn .nm{font-size:1.0625rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+.pn .nm{font-size:1.0625rem;font-weight:600;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere;color:var(--ink)}
 .gbar{height:0.375rem;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
 .gbar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#1fb37a,var(--grass))}
 .sctable tr.top1 .gbar i{background:linear-gradient(90deg,#c9a24a,var(--gold))}
@@ -314,8 +315,8 @@ button,input,select{font:inherit;color:inherit}
 .sctable th{position:sticky;top:0;z-index:2;background:#0d241c;font-family:var(--display);font-size:0.7188rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-2);font-weight:600;text-align:left;padding:0.5rem 0.625rem;border-bottom:1px solid var(--line-2)}
 .sctable td{padding:0.5rem 0.75rem;border-bottom:1px solid rgba(220,255,236,.07)}
 .sctable tr:last-child td{border-bottom:0}
-.sctable .pos{width:3rem;font-size:1.0625rem;font-weight:600;font-family:var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
-.sctable .g{width:4.5rem;text-align:right;font-family:var(--display);font-weight:700;font-size:1.625rem;font-variant-numeric:tabular-nums}
+.sctable .pos{width:2.5rem;font-size:1.0625rem;font-weight:600;font-family:var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.sctable .g{width:3.75rem;text-align:right;font-family:var(--display);font-weight:700;font-size:1.625rem;font-variant-numeric:tabular-nums}
 .sctable th.g,.sctable th.pos{font-size:0.7188rem;font-weight:600}
 .sctable tr.top1 td{background:rgba(233,196,106,.10)}
 .sctable tr.top1 .pos,.sctable tr.top1 .g{color:var(--gold)}
@@ -1185,7 +1186,7 @@ function tvBug(m){
   if (!m) return `<div class="hud kpi tvbug"><div class="tv-top"><span class="meta">Último partido</span></div><div class="tv-bot">Todavía no hay partidos</div></div>`;
   const cw = m.ganador === "Cabe";
   return `<div class="hud kpi tvbug" title="Último partido: ${esc(m.equipoCabe)} ${m.golesCabe}-${m.golesVerga} ${esc(m.equipoVerga)}">
-    <div class="tv-top"><span class="ft ${m.penales ? "pen" : ""}">${m.penales ? "PEN" : "FINAL"}</span><span class="meta">Último partido · FIFA ${m.fifa} · ${esc(m.liga)}</span><span>#${m.n}</span></div>
+    <div class="tv-top"><span class="ft ${m.penales ? "pen" : ""}">${m.penales ? "PEN" : "FINAL"}</span><span class="meta">FIFA ${m.fifa} · ${esc(m.liga)}</span><span>#${m.n}</span></div>
     <div class="tv-row">
       <span class="tv-team c">${crestHtml(m.equipoCabe)}<b>${esc(abbr(m.equipoCabe))}</b></span>
       <span class="tv-score"><b class="${cw ? "win" : ""}">${m.golesCabe}</b><i>–</i><b class="${cw ? "" : "win"}">${m.golesVerga}</b></span>
@@ -1428,7 +1429,7 @@ function openPlayer(name){
   const {host, close} = modal(`
     <div class="panel-head"><div><h2>${esc(r.nombre || name)}</h2><p>${total} ${total===1?"gol":"goles"} en ${goals.length} ${goals.length===1?"partido":"partidos"}</p></div><button class="btn ghost" type="button" data-close>Cerrar</button></div>
     <div class="pcard-wrap">
-      <div class="fcard">${photoHtml(name, "lg")}<div class="fn">${esc(r.nombre || name)}</div><div class="fg"><span><b>${total}</b> GOL</span><span><b>${goals.length}</b> PJ</span></div></div>
+      <div class="fcard">${photoHtml(name, "lg")}<div class="fn">${esc(r.nombre || name)}</div><div class="fg"><span><b>${total}</b> ${total === 1 ? "GOL" : "GOLES"}</span><span><b>${goals.length}</b> PJ</span></div></div>
       <div>
         <div class="sec-t" style="margin-top:0">Partidos en los que convirtió</div>
         <div class="hist">${goals.map(x => `<div class="hrow"><span class="n">#${x.m.n}</span><span class="hint">FIFA ${x.m.fifa}</span><span>${esc(x.m.equipoCabe)} <b>${x.m.golesCabe}-${x.m.golesVerga}</b> ${esc(x.m.equipoVerga)}</span><span class="res res-w">${x.n > 1 ? "x" + x.n : "⚽"}</span></div>`).join("") || `<p class="empty">Todavía no convirtió.</p>`}</div>
@@ -1976,7 +1977,7 @@ function renderLog(){
 setInterval(() => { if (view === "log") renderLog(); }, 60000);
 
 /* ---------- Indicador de versión (verde = al día, rojo = hay versión nueva) ---------- */
-const APP_VERSION = "2026.09.24-1435";
+const APP_VERSION = "2026.09.24-1549";
 function setupVersion(){
   if (!window.PF_STANDALONE) return;
   const b = $("#verBtn"); b.hidden = false;
