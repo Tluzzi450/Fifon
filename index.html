@@ -42,7 +42,7 @@ body{
     radial-gradient(900px 420px at 88% -140px, rgba(255,244,214,.07), transparent 70%),
     radial-gradient(1400px 600px at 50% 110%, rgba(18,90,58,.25), transparent 70%);
 }
-.wrap{max-width:1180px;margin:0 auto}
+.wrap{max-width:1680px;margin:0 auto}
 button,input,select{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--grass);outline-offset:2px}
 .dot{width:9px;height:9px;border-radius:2px;display:inline-block;flex:none;transform:rotate(45deg)}
@@ -148,6 +148,34 @@ button,input,select{font:inherit;color:inherit}
 .donut-center b{font-family:var(--display);font-size:clamp(22px,6vw,30px);line-height:1;color:var(--gold)}
 .donut-center small{font-size:11px;color:var(--ink-2);letter-spacing:.14em;text-transform:uppercase;font-family:var(--display)}
 
+#cvLiga{height:var(--liga-h,480px)}
+/* Pantallas anchas: 4 columnas sin huecos */
+@media (min-width:1360px){
+  body{padding-inline:28px}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;
+    grid-template-areas:"evo evo evo wins" "pens fifa goles racha" "liga liga tw tl" "liga liga gol gol"}
+  .grid > .stack{display:contents}
+  .grid .c-evo{grid-area:evo}.grid .c-wins{grid-area:wins}.grid .c-pens{grid-area:pens}.grid .c-fifa{grid-area:fifa}
+  .grid .c-goles{grid-area:goles}.grid .c-racha{grid-area:racha}.grid .c-liga{grid-area:liga}
+  .grid .c-tw{grid-area:tw}.grid .c-tl{grid-area:tl}.grid .c-gol{grid-area:gol}
+  .grid .c-liga{display:flex;flex-direction:column}
+  .grid .c-liga #cvLiga{height:auto;min-height:var(--liga-h,480px);flex:1}
+  .grid .c-liga #cvLiga canvas{position:absolute;inset:0}
+  .grid .c-racha{display:flex;flex-direction:column}
+  .grid .c-racha .sbars{flex:1;justify-content:center;gap:18px}
+  .grid .c-racha .sb .track{height:24px}
+  .grid .c-gol .scbox{max-height:330px}
+  .grid .c-wins .card-cv{height:260px!important}
+  .kpis{gap:16px}
+}
+@media (min-width:1360px){
+  .grid .c-gol .sctable thead{display:none}
+  .grid .c-gol .sctable tbody{display:grid;grid-template-columns:1fr 1fr;column-gap:0}
+  .grid .c-gol .sctable tr{display:grid;grid-template-columns:44px 1fr 56px;align-items:center}
+  .grid .c-gol .sctable tr:nth-child(odd){border-right:1px solid rgba(220,255,236,.07)}
+  .grid .c-gol .sctable tr:nth-child(odd) .g{padding-right:16px}
+  .grid .c-gol .sctable tr:nth-last-child(2) td{border-bottom:0}
+}
 /* Goals card */
 .gl{display:grid;grid-template-columns:auto 1fr;gap:14px 12px;align-items:center}
 .gl .who{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:var(--ink-2)}
@@ -501,61 +529,61 @@ try {
     <div class="kpis" id="kpis"></div>
 
     <div class="grid">
-      <article class="hud turf card span-6"><span class="chalk"></span>
+      <article class="hud turf card c-evo span-6"><span class="chalk"></span>
         <h3>Cómo viene la serie</h3>
         <p class="sub">Victorias acumuladas partido a partido</p>
         <div class="legend"><span><i class="dot c"></i>Cabe</span><span><i class="dot v"></i>Verga</span></div>
         <div class="cv" style="height:260px"><canvas id="chEvo" aria-label="Victorias acumuladas por partido"></canvas></div>
       </article>
 
-      <article class="hud turf card span-2 half pair"><span class="chalk"></span>
+      <article class="hud turf card c-wins span-2 half pair"><span class="chalk"></span>
         <h3>Victorias</h3>
         <p class="sub">Reparto del total (incluye penales)</p>
         <div class="cv card-cv" style="height:220px"><canvas id="chWins" aria-label="Torta de victorias"></canvas><div class="donut-center"><b id="dwTot">0</b><small>partidos</small></div></div>
       </article>
-      <article class="hud turf card span-2 half pair"><span class="chalk"></span>
+      <article class="hud turf card c-pens span-2 half pair"><span class="chalk"></span>
         <h3>Definidos por penales</h3>
         <p class="sub">Empates y quién ganó la tanda</p>
         <div class="cv card-cv" style="height:220px"><canvas id="chPens" aria-label="Torta de penales"></canvas><div class="donut-center"><b id="dpTot">0</b><small>por penales</small></div></div>
       </article>
-      <article class="hud turf card span-2"><span class="chalk"></span>
+      <article class="hud turf card c-fifa span-2"><span class="chalk"></span>
         <h3>Por versión de FIFA</h3>
         <p class="sub">Victorias en cada juego</p>
         <div class="legend"><span><i class="dot c"></i>Cabe</span><span><i class="dot v"></i>Verga</span></div>
         <div class="cv" style="height:190px"><canvas id="chFifa" aria-label="Victorias por FIFA"></canvas></div>
       </article>
 
-      <article class="hud turf card span-4"><span class="chalk"></span>
+      <article class="hud turf card c-liga span-4"><span class="chalk"></span>
         <h3>Victorias por liga</h3>
         <p class="sub">Ordenado por cantidad de partidos jugados</p>
         <div class="legend"><span><i class="dot c"></i>Cabe</span><span><i class="dot v"></i>Verga</span></div>
         <div class="cv" id="cvLiga"><canvas id="chLiga" aria-label="Victorias por liga"></canvas></div>
       </article>
       <div class="stack span-2">
-        <article class="hud turf card"><span class="chalk"></span>
+        <article class="hud turf card c-goles"><span class="chalk"></span>
           <h3>Goles a favor</h3>
           <p class="sub">Total, promedio por partido y diferencia</p>
           <div class="gl" id="goals"></div>
           <div class="gdiff" id="gdiff"></div>
         </article>
-        <article class="hud turf card"><span class="chalk"></span>
+        <article class="hud turf card c-racha"><span class="chalk"></span>
           <h3>Racha máxima</h3>
           <p class="sub">Victorias seguidas, récord de cada uno</p>
           <div class="sbars" id="streaks"></div>
         </article>
       </div>
 
-      <article class="hud turf card span-2 half"><span class="chalk"></span>
+      <article class="hud turf card c-tw span-2 half"><span class="chalk"></span>
         <h3>Equipos más ganadores</h3>
         <p class="sub">2 o más victorias · tocá un equipo para ver su ficha</p>
         <div class="trows" id="teamW"></div>
       </article>
-      <article class="hud turf card span-2 half"><span class="chalk"></span>
+      <article class="hud turf card c-tl span-2 half"><span class="chalk"></span>
         <h3>Equipos más perdedores</h3>
         <p class="sub">2 o más derrotas · color = quién perdió con ese equipo</p>
         <div class="trows" id="teamL"></div>
       </article>
-      <article class="hud turf card span-2"><span class="chalk"></span>
+      <article class="hud turf card c-gol span-2"><span class="chalk"></span>
         <h3>Goleadores</h3>
         <p class="sub" id="golSub">Goles registrados</p>
         <div class="scbox"><table class="sctable"><thead><tr><th class="pos">Pos</th><th>Jugador</th><th class="g">Goles</th></tr></thead><tbody id="scorers"></tbody></table></div>
@@ -1112,7 +1140,7 @@ function renderDash(){
     options:{...bo, scales:axes(P,false), plugins:{...bo.plugins, tooltip:{...bo.plugins.tooltip, mode:"index", intersect:false}}}});
 
   const ligas = Array.from(countBy(L, m=>m.liga)).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0])).map(x=>x[0]);
-  $("#cvLiga").style.height = Math.max(160, ligas.length*29 + 40) + "px";
+  $("#cvLiga").style.setProperty("--liga-h", Math.max(160, ligas.length*29 + 40) + "px");
   makeChart("chLiga", {type:"bar", data:{labels:ligas, datasets:[
       barDs("Cabe", ligas.map(l=>L.filter(m=>m.liga===l&&m.ganador==="Cabe").length), gCx, {maxBarThickness:12}),
       barDs("Verga", ligas.map(l=>L.filter(m=>m.liga===l&&m.ganador==="Verga").length), gVx, {maxBarThickness:12})]},
@@ -1567,7 +1595,7 @@ function renderLog(){
 setInterval(() => { if (view === "log") renderLog(); }, 60000);
 
 /* ---------- Indicador de versión (verde = al día, rojo = hay versión nueva) ---------- */
-const APP_VERSION = "2026.09.24-0038";
+const APP_VERSION = "2026.09.24-0051";
 function setupVersion(){
   if (!window.PF_STANDALONE) return;
   const b = $("#verBtn"); b.hidden = false;
