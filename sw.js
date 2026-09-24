@@ -1,5 +1,5 @@
 /* Service worker de Paternidad FIFA: la app abre sin conexión y se actualiza sola. */
-const VERSION = "pf-2026.09.24-0058";
+const VERSION = "pf-2026.09.24-1408";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "seed.json", "logo.png",
   "icon-192.png", "icon-512.png", "maskable-512.png", "apple-touch-icon.png", "favicon-32.png"];
 
@@ -15,6 +15,7 @@ self.addEventListener("fetch", e => {
   const url = new URL(req.url);
   // Control de versión, login de Google y base de datos: siempre por internet
   if (url.pathname.endsWith("version.json")) return;
+  if (url.hostname.endsWith("wikipedia.org")) return; // búsquedas de fotos: siempre en vivo
   if (url.hostname.endsWith("googleapis.com") && !url.hostname.startsWith("fonts.")) return;
   if (url.hostname.endsWith("firebaseapp.com") || url.hostname.endsWith("web.app") || url.hostname.endsWith("google.com")) return;
   // Página, config.js y datos iniciales: primero internet (así llegan los cambios), si no hay, lo guardado
