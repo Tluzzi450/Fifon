@@ -174,7 +174,7 @@ button,input,select{font:inherit;color:inherit}
   .grid .c-gol{grid-column:span 6}
   .grid .c-gol .sctable thead{display:none}
   .grid .c-gol .sctable tbody{display:grid;grid-template-columns:1fr 1fr;column-gap:0}
-  .grid .c-gol .sctable tr{display:grid;grid-template-columns:2.75rem 1fr 3.5rem;align-items:center}
+  .grid .c-gol .sctable tr{display:grid;grid-template-columns:3rem 1fr 4rem;align-items:center}
   .grid .c-gol .sctable tr:nth-child(odd){border-right:1px solid rgba(220,255,236,.07)}
   .grid .c-gol .sctable tr:nth-child(odd) .g{padding-right:1rem}
   .grid .c-gol .sctable tr:nth-last-child(2) td{border-bottom:0}
@@ -218,13 +218,32 @@ button,input,select{font:inherit;color:inherit}
 .card-head .grp{display:flex;gap:0.25rem}
 .sctable tbody tr{cursor:pointer}
 .sctable tbody tr:hover td{background:rgba(46,229,157,.05)}
-.pl{display:flex;align-items:center;gap:0.625rem;min-width:0}
-.pl{max-width:100%}
+.pl{display:flex;align-items:center;gap:0.875rem;min-width:0}
+.pl{max-width:100%;width:100%}
 .pl span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ph{width:2rem;height:2.6rem;flex:none;border-radius:3px;overflow:hidden;background:linear-gradient(160deg,#1c3b2f,#0d241c);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:0.75rem;color:var(--ink-2);border:1px solid rgba(233,196,106,.25)}
-.ph img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.ph.lg{width:9rem;height:12.5rem;font-size:2rem;border-width:2px}
+.ph{position:relative}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+.ph.lg{width:100%;aspect-ratio:3/4;height:auto;font-size:2.5rem;border-width:2px}
 .ph.sg{width:1.75rem;height:2.25rem}
+.ph.md{width:3.25rem;height:4.25rem;border-radius:0.3125rem;font-size:0.9375rem}
+.pn{flex:1;min-width:0;display:flex;flex-direction:column;gap:0.4375rem}
+.pn .nm{font-size:1.0625rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+.gbar{height:0.375rem;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.gbar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#1fb37a,var(--grass))}
+.sctable tr.top1 .gbar i{background:linear-gradient(90deg,#c9a24a,var(--gold))}
+.sctable tr.top1 .pn .nm{color:var(--gold)}
+@media (min-width:1360px) and (max-width:1760px){
+  .c-gol .sctable .pos{width:2rem}
+  .c-gol .sctable td.pos{font-size:0.9375rem}
+  .c-gol .sctable .g{width:3.25rem}
+  .c-gol .sctable td.g{font-size:1.375rem}
+  .c-gol .sctable th{padding-inline:0.4375rem;letter-spacing:.08em}
+  .c-gol .sctable td{padding:0.5rem 0.4375rem}
+  .c-gol .ph.md{width:2.75rem;height:3.6rem}
+  .c-gol .pl{gap:0.625rem}
+  .c-gol .pn .nm{font-size:1rem}
+}
 /* Autocompletado de goleadores */
 .sugg{position:absolute;z-index:40;left:0;right:0;top:100%;margin-top:0.25rem;background:var(--surface-2);border:1px solid var(--grass-dim);border-radius:4px;box-shadow:0 0.75rem 2rem rgba(0,0,0,.5);max-height:18rem;overflow-y:auto}
 .sugg button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:0.625rem;width:100%;padding:0.375rem 0.625rem;cursor:pointer;font-size:0.9375rem}
@@ -234,8 +253,8 @@ button,input,select{font:inherit;color:inherit}
 /* Ficha de jugador */
 .pcard-wrap{display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:start}
 @media (max-width:640px){.pcard-wrap{grid-template-columns:1fr;justify-items:center}}
-.fcard{position:relative;width:11rem;padding:0.625rem 0.625rem 0.75rem;border-radius:0.75rem 0.75rem 1.5rem 1.5rem;background:linear-gradient(160deg,#f3d98a,#c9a24a 45%,#8a6a22);box-shadow:0 0.75rem 2rem rgba(0,0,0,.45),inset 0 0 0 2px rgba(255,255,255,.35);color:#231a05;text-align:center}
-.fcard .ph.lg{margin:0 auto;border-color:rgba(35,26,5,.35);background:rgba(35,26,5,.15);color:#231a05}
+.fcard{position:relative;width:13rem;padding:0.625rem 0.625rem 0.75rem;border-radius:0.75rem 0.75rem 1.5rem 1.5rem;background:linear-gradient(160deg,#f3d98a,#c9a24a 45%,#8a6a22);box-shadow:0 0.75rem 2rem rgba(0,0,0,.45),inset 0 0 0 2px rgba(255,255,255,.35);color:#231a05;text-align:center}
+.fcard .ph.lg{margin:0 auto;border-radius:0.5rem;border-color:rgba(35,26,5,.35);background:rgba(35,26,5,.15);color:#231a05}
 .fcard .fn{font-family:var(--display);font-weight:700;font-size:1.0625rem;letter-spacing:.06em;text-transform:uppercase;margin-top:0.375rem;line-height:1.1}
 .fcard .fr{position:absolute;top:0.875rem;left:0.875rem;font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1;text-align:left}
 .fcard .fr small{display:block;font-size:0.75rem;letter-spacing:.1em}
@@ -245,7 +264,7 @@ button,input,select{font:inherit;color:inherit}
 .wk-res{display:grid;grid-template-columns:repeat(auto-fill,minmax(8.5rem,1fr));gap:0.5rem;margin-top:0.625rem}
 .wk-res button{all:unset;box-sizing:border-box;cursor:pointer;border:1px solid var(--line-2);border-radius:4px;background:var(--surface-3);overflow:hidden;display:flex;flex-direction:column}
 .wk-res button:hover,.wk-res button:focus-visible{border-color:var(--grass);outline:none}
-.wk-res img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;background:#0d241c;display:block}
+.wk-res img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 18%;background:#0d241c;display:block}
 .wk-res b{font-size:0.8125rem;padding:0.375rem 0.5rem 0;line-height:1.2}
 .wk-res small{font-size:0.6875rem;color:var(--muted);padding:0.125rem 0.5rem 0.5rem;line-height:1.25}
 .fcard .fg{display:flex;justify-content:center;gap:0.75rem;margin-top:0.25rem;font-family:var(--display);font-size:0.8125rem;letter-spacing:.06em}
@@ -292,12 +311,12 @@ button,input,select{font:inherit;color:inherit}
 /* Scorers table */
 .scbox{max-height:21.25rem;overflow-y:auto;border:1px solid rgba(220,255,236,.12);border-radius:0.1875rem;background:rgba(4,11,9,.35)}
 .sctable{width:100%;table-layout:fixed;border-collapse:collapse;font-size:0.875rem}
-.sctable th{position:sticky;top:0;background:#0d241c;font-family:var(--display);font-size:0.7188rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-2);font-weight:600;text-align:left;padding:0.5rem 0.625rem;border-bottom:1px solid var(--line-2)}
-.sctable td{padding:0.4375rem 0.625rem;border-bottom:1px solid rgba(220,255,236,.07)}
+.sctable th{position:sticky;top:0;z-index:2;background:#0d241c;font-family:var(--display);font-size:0.7188rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-2);font-weight:600;text-align:left;padding:0.5rem 0.625rem;border-bottom:1px solid var(--line-2)}
+.sctable td{padding:0.5rem 0.75rem;border-bottom:1px solid rgba(220,255,236,.07)}
 .sctable tr:last-child td{border-bottom:0}
-.sctable .pos{width:2.75rem;font-family:var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
-.sctable .g{width:4rem;text-align:right;font-family:var(--display);font-weight:700;font-size:1rem;font-variant-numeric:tabular-nums}
-.sctable th.g{font-size:0.7188rem}
+.sctable .pos{width:3rem;font-size:1.0625rem;font-weight:600;font-family:var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.sctable .g{width:4.5rem;text-align:right;font-family:var(--display);font-weight:700;font-size:1.625rem;font-variant-numeric:tabular-nums}
+.sctable th.g,.sctable th.pos{font-size:0.7188rem;font-weight:600}
 .sctable tr.top1 td{background:rgba(233,196,106,.10)}
 .sctable tr.top1 .pos,.sctable tr.top1 .g{color:var(--gold)}
 
@@ -677,9 +696,9 @@ try {
         </details>
       </article>
       <article class="hud turf card c-gol span-2"><span class="chalk"></span>
-        <div class="card-head"><h3>Goleadores</h3><span class="grp" id="golBtns"><button class="btn ghost sm" type="button" id="autoPh" title="Buscar en Wikipedia una foto de cada goleador sin foto">Buscar fotos</button><label class="btn ghost sm filebtn" id="bulkLbl" title="Elegí varias imágenes: cada archivo con el nombre del jugador (ej: Gyokeres.png)">Subir fotos<input type="file" id="bulkIn" accept="image/*" multiple></label></span></div>
+        <div class="card-head"><h3>Goleadores</h3></div>
         <p class="sub" id="golSub">Goles registrados</p>
-        <div class="scbox"><table class="sctable"><thead><tr><th class="pos">Pos</th><th>Jugador</th><th class="g">Goles</th></tr></thead><tbody id="scorers"></tbody></table></div>
+        <div class="scbox"><table class="sctable"><thead><tr><th class="pos">#</th><th>Jugador</th><th class="g">Goles</th></tr></thead><tbody id="scorers"></tbody></table></div>
       </article>
     </div>
   </section>
@@ -1232,10 +1251,9 @@ function renderDash(){
   const list = Array.from(sc.values()).sort((a,b)=>b.n-a.n || a.name.localeCompare(b.name));
   $("#golSub").textContent = `${list.length} jugadores · ${list.reduce((s,e)=>s+e.n,0)} goles con autor registrado`;
   let pos = 0, prev = null;
-  $("#scorers").innerHTML = list.length ? list.map((e,i) => { if (e.n !== prev) { pos = i+1; prev = e.n; } return `<tr class="${pos===1?"top1":""}" data-player="${esc(e.name)}" tabindex="0"><td class="pos">${pos}</td><td><span class="pl">${photoHtml(e.name)}<span>${esc(e.name)}</span></span></td><td class="g">${e.n}</td></tr>`; }).join("")
+  $("#scorers").innerHTML = list.length ? list.map((e,i) => { if (e.n !== prev) { pos = i+1; prev = e.n; } return `<tr class="${pos===1?"top1":""}" data-player="${esc(e.name)}" tabindex="0"><td class="pos">${pos}</td><td><div class="pl">${photoHtml(e.name, "md")}<div class="pn"><span class="nm">${esc(e.name)}</span><div class="gbar"><i style="width:${Math.round(e.n / (list[0] ? list[0].n : 1) * 100)}%"></i></div></div></div></td><td class="g">${e.n}</td></tr>`; }).join("")
     : `<tr><td colspan="3" class="empty">Sin goleadores cargados.</td></tr>`;
 
-  $("#golBtns").hidden = !(store && store.setPlayer);
   renderReg(L);
 
   if (!window.Chart) return;
@@ -1410,7 +1428,7 @@ function openPlayer(name){
   const {host, close} = modal(`
     <div class="panel-head"><div><h2>${esc(r.nombre || name)}</h2><p>${total} ${total===1?"gol":"goles"} en ${goals.length} ${goals.length===1?"partido":"partidos"}</p></div><button class="btn ghost" type="button" data-close>Cerrar</button></div>
     <div class="pcard-wrap">
-      <div class="fcard">${r.media ? `<div class="fr">${esc(r.media)}<small>${esc(r.pos || "")}</small></div>` : ""}${photoHtml(name, "lg")}<div class="fn">${esc(r.nombre || name)}</div><div class="fg"><span><b>${total}</b> GOL</span><span><b>${goals.length}</b> PJ</span></div>${r.foto && r.fotoLink ? `<div class="fsrc">Foto: <a href="${esc(r.fotoLink)}" target="_blank" rel="noopener">Wikimedia Commons</a></div>` : ""}</div>
+      <div class="fcard">${photoHtml(name, "lg")}<div class="fn">${esc(r.nombre || name)}</div><div class="fg"><span><b>${total}</b> GOL</span><span><b>${goals.length}</b> PJ</span></div></div>
       <div>
         <div class="sec-t" style="margin-top:0">Partidos en los que convirtió</div>
         <div class="hist">${goals.map(x => `<div class="hrow"><span class="n">#${x.m.n}</span><span class="hint">FIFA ${x.m.fifa}</span><span>${esc(x.m.equipoCabe)} <b>${x.m.golesCabe}-${x.m.golesVerga}</b> ${esc(x.m.equipoVerga)}</span><span class="res res-w">${x.n > 1 ? "x" + x.n : "⚽"}</span></div>`).join("") || `<p class="empty">Todavía no convirtió.</p>`}</div>
@@ -1418,14 +1436,9 @@ function openPlayer(name){
         <div class="sec-t">Buscar foto en internet</div>
         <div class="wk-search"><div class="field"><label for="wkQ">Nombre a buscar (si no aparece, probá con nombre y apellido)</label><input id="wkQ" value="${esc(r.busqueda || r.nombre || name)}"></div><button class="btn" type="button" id="wkGo">Buscar</button></div>
         <div class="wk-res" id="wkRes"></div>
-        <div class="sec-t">Foto o tarjeta propia</div>
+        <div class="sec-t">O subí una imagen propia</div>
         <div class="actions" style="margin-top:0"><label class="btn sm filebtn">${r.foto ? "Cambiar imagen" : "Subir imagen"}<input type="file" id="plFile" accept="image/*"></label>${r.foto ? `<button class="btn sm danger" type="button" id="plDel">Quitar imagen</button>` : ""}</div>
-        <div class="apform"><div class="field"><label for="plUrl">…o pegá el link de una imagen</label><input id="plUrl" placeholder="https://…/jugador.png" value="${esc(r.foto && !String(r.foto).startsWith("data:") ? r.foto : "")}"></div><button class="btn" type="button" id="plUrlSave">Usar link</button></div>
-        <div class="meta" style="grid-template-columns:1fr 1fr;margin-top:0.5rem">
-          <div class="field"><label for="plMed">Media (opcional)</label><input id="plMed" inputmode="numeric" maxlength="3" value="${esc(r.media || "")}" placeholder="Ej: 87"></div>
-          <div class="field"><label for="plPos">Posición (opcional)</label><input id="plPos" maxlength="4" value="${esc(r.pos || "")}" placeholder="Ej: DC"></div>
-        </div>
-        <div class="actions"><button class="btn primary" type="button" id="plSave">Guardar datos</button><span class="hint" id="plHint"></span></div>` : ""}
+        <p class="hint" id="plHint"></p>` : ""}
       </div>
     </div>`);
   const save = async (patch, msg) => {
@@ -1435,8 +1448,6 @@ function openPlayer(name){
   const f = $("#plFile", host);
   if (f) f.addEventListener("change", async () => { const file = f.files[0]; if (!file) return; $("#plHint", host).textContent = "Procesando imagen…"; try { await save({foto: await toCard(file), fotoLink: ""}, `Cargó la imagen de ${name}`); } catch(e){ $("#plHint", host).textContent = "No se pudo leer la imagen."; } });
   const d = $("#plDel", host); if (d) d.addEventListener("click", () => save({foto: "", fotoLink: ""}, `Quitó la imagen de ${name}`));
-  const u = $("#plUrlSave", host); if (u) u.addEventListener("click", () => { const v = $("#plUrl", host).value.trim(); if (!/^https?:\/\//i.test(v)) { $("#plHint", host).textContent = "El link tiene que empezar con https://"; return; } save({foto: v, fotoLink: ""}, `Cargó la imagen de ${name}`); });
-  const sv = $("#plSave", host); if (sv) sv.addEventListener("click", () => save({media: norm($("#plMed", host).value), pos: norm($("#plPos", host).value).toUpperCase()}, `Actualizó los datos de ${name}`));
   const go = $("#wkGo", host);
   if (go) {
     let found = [];
@@ -1458,7 +1469,7 @@ function openPlayer(name){
 /* ---------- Fotos desde Wikipedia / Wikimedia Commons (licencia libre) ---------- */
 const FOOTY = /futbol|fútbol|football|soccer|futebol|calcio|fußball|voetbal|delantero|centrocampista|defensa|portero|mediocampista|striker|forward|midfielder|defender|goalkeeper/i;
 async function wikiQuery(lang, q, n){
-  const url = `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=0&gsrlimit=${n}&gsrsearch=${encodeURIComponent(q)}&prop=pageimages|description|info&inprop=url&piprop=thumbnail&pithumbsize=480`;
+  const url = `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=0&gsrlimit=${n}&gsrsearch=${encodeURIComponent(q)}&prop=pageimages|description|info&inprop=url&piprop=thumbnail&pithumbsize=640`;
   const r = await fetch(url); if (!r.ok) throw new Error("wiki");
   const j = await r.json();
   return Object.values((j.query && j.query.pages) || {}).sort((a,b) => (a.index||0) - (b.index||0))
@@ -1496,8 +1507,7 @@ async function autoPhotos(){
 }
 $("#scorers").addEventListener("click", e => { const tr = e.target.closest("tr[data-player]"); if (tr) openPlayer(tr.dataset.player); });
 $("#scorers").addEventListener("keydown", e => { if (e.key === "Enter") { const tr = e.target.closest("tr[data-player]"); if (tr) openPlayer(tr.dataset.player); } });
-$("#autoPh").addEventListener("click", autoPhotos);
-$("#bulkIn").addEventListener("change", async e => {
+$("#bulkIn") && $("#bulkIn").addEventListener("change", async e => {
   const files = Array.from(e.target.files || []); e.target.value = ""; if (!files.length || !store || !store.setPlayer) return;
   const known = allScorers(); let ok = 0, nuevos = 0, fail = 0;
   const {host, close} = modal(`<div class="panel-head"><div><h2>Cargando fotos</h2><p>Cada imagen se asigna al jugador con el mismo nombre de archivo.</p></div></div><div class="progress"><i id="bkBar"></i></div><p class="hint" id="bkTxt" style="margin-top:0.5rem"></p><div class="actions"><button class="btn" type="button" data-close hidden id="bkClose">Cerrar</button></div>`);
@@ -1966,7 +1976,7 @@ function renderLog(){
 setInterval(() => { if (view === "log") renderLog(); }, 60000);
 
 /* ---------- Indicador de versión (verde = al día, rojo = hay versión nueva) ---------- */
-const APP_VERSION = "2026.09.24-1408";
+const APP_VERSION = "2026.09.24-1435";
 function setupVersion(){
   if (!window.PF_STANDALONE) return;
   const b = $("#verBtn"); b.hidden = false;
