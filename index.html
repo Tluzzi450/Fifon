@@ -525,6 +525,50 @@ body.locked .tabs, body.locked [data-view-panel]{display:none!important}
 .empty{padding:1.75rem;text-align:center;color:var(--muted)}
 .progress{height:0.375rem;background:var(--surface-3);border-radius:0.1875rem;overflow:hidden;margin-top:0.625rem}
 .progress i{display:block;height:100%;background:var(--grass);width:0}
+/* Banner rotativo de récords */
+.recs-card{display:flex;flex-direction:column;gap:0.75rem;overflow:hidden}
+.recs{display:grid;flex:1;align-items:center;touch-action:pan-y}
+.rec{grid-area:1/1;display:flex;flex-direction:column;gap:0.625rem;min-width:0;opacity:0;visibility:hidden;transform:translateX(1.75rem);transition:opacity .6s ease,transform .6s ease,visibility 0s linear .6s}
+.rec.on{opacity:1;visibility:visible;transform:none;transition:opacity .6s ease .15s,transform .6s ease .15s,visibility 0s}
+.rec.out{transform:translateX(-1.75rem)}
+.rec-k{display:flex;align-items:center;gap:0.5rem;font-family:var(--display);font-weight:700;font-size:0.8125rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.rec-k::before{content:"";width:0.25rem;height:0.875rem;background:linear-gradient(180deg,var(--gold),var(--grass));transform:skewX(-18deg);flex:none}
+.rec-k .sc{margin-left:auto;font-weight:600;letter-spacing:.12em;color:var(--ink-2);opacity:.75;font-size:0.6875rem;white-space:nowrap}
+.rec-big{display:flex;align-items:baseline;gap:0.625rem;flex-wrap:wrap;min-width:0}
+.rec-big b{font-family:var(--display);font-weight:700;font-size:3rem;line-height:.95;color:var(--ink);font-variant-numeric:tabular-nums;text-shadow:0 0 1.5rem rgba(233,196,106,.25)}
+.rec-big b.c{color:var(--cabe-2)} .rec-big b.v{color:var(--verga-2)} .rec-big b.g{color:var(--gold)}
+.rec-big span{color:var(--ink-2);font-size:0.9375rem;line-height:1.3}
+.rec-big span strong{color:var(--ink);font-weight:600}
+.rec .tv-row .tv-team{font-size:1.125rem;padding:0.25rem 0.5rem}
+.rec .tv-row .tv-team .crest{width:1.75rem;height:1.75rem}
+.rec .tv-score{font-size:1.375rem}
+.rec-cap{font-size:0.8125rem;color:var(--ink-2);display:flex;justify-content:space-between;gap:0.5rem;white-space:nowrap;overflow:hidden}
+.rec-cap span{overflow:hidden;text-overflow:ellipsis}
+.rec-cap .note{color:var(--gold);opacity:.9;flex:none}
+.rec-pl{display:flex;align-items:center;gap:0.875rem;min-width:0}
+.rec-pl .ph.md{width:4rem;height:5.25rem;font-size:1.125rem}
+.rec-pl .who{min-width:0;display:flex;flex-direction:column;gap:0.125rem}
+.rec-pl .who .nm{font-family:var(--display);font-weight:700;font-size:1.375rem;line-height:1.1;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rec-pl .who .gl{font-family:var(--display);font-size:1.0625rem;color:var(--gold);letter-spacing:.06em}
+.rec-pl .who .gl b{font-size:2rem;margin-right:0.25rem}
+.rec-st{display:flex;flex-direction:column;gap:0.625rem}
+.rec-st .row{display:grid;grid-template-columns:4.5rem minmax(0,1fr) auto;align-items:center;gap:0.625rem}
+.rec-st .who{display:flex;align-items:center;gap:0.375rem;font-weight:600}
+.rec-st .pips{display:flex;gap:0.1875rem;min-width:0}
+.rec-st .pips i{flex:1;max-width:1.25rem;height:0.875rem;border-radius:2px;background:rgba(255,255,255,.07);transform:skewX(-14deg)}
+.rec-st .pips i.c{background:linear-gradient(135deg,var(--cabe),var(--cabe-2))} .rec-st .pips i.v{background:linear-gradient(135deg,var(--verga),var(--verga-2))}
+.rec-st .val{font-family:var(--display);font-weight:700;font-size:1.5rem;font-variant-numeric:tabular-nums;text-align:right}
+.rec-st .rg{grid-column:2 / -1;margin-top:-0.375rem;font-size:0.75rem;color:var(--ink-2)}
+.rec-st .rg em{font-style:normal;color:var(--grass)}
+.rec-empty{color:var(--ink-2);text-align:center;padding:2rem 0}
+.rec-dots{display:flex;gap:0.3125rem}
+.rec-dots button{flex:1;height:0.25rem;padding:0;border:0;border-radius:2px;background:rgba(255,255,255,.12);cursor:pointer;overflow:hidden;position:relative}
+.rec-dots button::after{content:"";position:absolute;inset:-0.5rem 0}
+.rec-dots button i{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--grass),var(--gold))}
+.rec-dots button.done i{transform:scaleX(1);opacity:.45}
+.rec-dots button.on i{animation:recfill 10s linear forwards}
+.recs-card:hover .rec-dots button.on i,.recs-card:focus-within .rec-dots button.on i{animation-play-state:paused}
+@keyframes recfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}code{font-size:.92em;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px}</style>
@@ -637,15 +681,14 @@ try {
         <div class="cv" style="height:16.25rem"><canvas id="chEvo" aria-label="Victorias acumuladas por partido"></canvas></div>
       </article>
 
-      <article class="hud turf card c-wins span-2 half pair"><span class="chalk"></span>
+      <article class="hud turf card c-wins span-2 half"><span class="chalk"></span>
         <h3>Victorias</h3>
         <p class="sub">Reparto del total (incluye penales)</p>
         <div class="cv card-cv" style="height:13.75rem"><canvas id="chWins" aria-label="Torta de victorias"></canvas><div class="donut-center"><b id="dwTot">0</b><small>partidos</small></div></div>
       </article>
-      <article class="hud turf card c-pens span-2 half pair"><span class="chalk"></span>
-        <h3>Definidos por penales</h3>
-        <p class="sub">Empates y quién ganó la tanda</p>
-        <div class="cv card-cv" style="height:13.75rem"><canvas id="chPens" aria-label="Torta de penales"></canvas><div class="donut-center"><b id="dpTot">0</b><small>por penales</small></div></div>
+      <article class="hud turf card c-pens span-2 half recs-card" aria-roledescription="carrusel" aria-label="Récords de la serie"><span class="chalk"></span>
+        <div class="recs" id="recs"></div>
+        <div class="rec-dots" id="recDots" role="tablist"></div>
       </article>
       <article class="hud turf card c-fifa span-2"><span class="chalk"></span>
         <h3>Por versión de FIFA</h3>
@@ -1195,6 +1238,122 @@ function tvBug(m){
     <div class="tv-bot"><span>${esc(m.equipoCabe)} vs ${esc(m.equipoVerga)}</span><span>Ganó ${m.ganador}${m.penales ? " por penales" : ""}</span></div>
   </div>`;
 }
+/* ---------- Banner de récords ---------- */
+let recIdx = 0, recSig = "", recTimer = null;
+const REC_MS = 10000;
+function recRow(m){
+  const cw = m.ganador === "Cabe";
+  return `<div class="tv-row">
+      <span class="tv-team c">${crestHtml(m.equipoCabe)}<b>${esc(abbr(m.equipoCabe))}</b></span>
+      <span class="tv-score"><b class="${cw ? "win" : ""}">${m.golesCabe}</b><i>–</i><b class="${cw ? "" : "win"}">${m.golesVerga}</b></span>
+      <span class="tv-team v"><b>${esc(abbr(m.equipoVerga))}</b>${crestHtml(m.equipoVerga)}</span>
+    </div>`;
+}
+function recCap(m, note){
+  return `<div class="rec-cap"><span>#${m.n} · FIFA ${m.fifa} · ${esc(m.liga)}${m.penales ? " · pen." : ""}</span>${note ? `<span class="note">${note}</span>` : ""}</div>`;
+}
+const vecesTxt = k => k > 1 ? `Se dio ${k} veces` : "";
+function bestBy(list, score){
+  let best = null, bv = -Infinity, k = 0;
+  list.forEach(m => { const v = score(m); if (v == null) return; if (v > bv) { bv = v; best = m; k = 1; } else if (v === bv) { best = m; k++; } });
+  return best ? {m:best, v:bv, k} : null;
+}
+function buildRecords(L){
+  const slides = [];
+  const scope = fifaSel === "all" ? "Histórico" : `FIFA ${fifaSel}`;
+  const head = t => `<div class="rec-k">${t}<span class="sc">${scope}</span></div>`;
+  const gl = n => `${n} ${n === 1 ? "gol" : "goles"}`;
+  const tot = m => (+m.golesCabe||0) + (+m.golesVerga||0);
+  const mar = m => Math.abs((+m.golesCabe||0) - (+m.golesVerga||0));
+
+  const g = bestBy(L.filter(m => !m.penales), mar);
+  if (g && g.v > 0) {
+    const w = g.m.ganador, l = w === "Cabe" ? "Verga" : "Cabe";
+    slides.push(head("Goleada más grande") +
+      `<div class="rec-big"><b class="${w === "Cabe" ? "c" : "v"}">+${g.v}</b><span><strong>${w}</strong> le ganó a ${l} por ${gl(g.v)}</span></div>` +
+      recRow(g.m) + recCap(g.m, vecesTxt(g.k)));
+  }
+  const t = bestBy(L, tot);
+  if (t && t.v > 0) {
+    slides.push(head("Partido con más goles") +
+      `<div class="rec-big"><b class="g">${t.v}</b><span>goles en un solo partido</span></div>` +
+      recRow(t.m) + recCap(t.m, vecesTxt(t.k)));
+  }
+  let sBest = null, sK = 0;
+  L.forEach(m => {
+    const cnt = new Map();
+    (m.goleadores||[]).forEach(x => { const k = key(x); if (!k) return; const e = cnt.get(k) || {name:titleCase(x), n:0}; e.n++; cnt.set(k, e); });
+    cnt.forEach(e => { if (!sBest || e.n > sBest.n) { sBest = {...e, m}; sK = 1; } else if (e.n === sBest.n) { sBest = {...e, m}; sK++; } });
+  });
+  if (sBest && sBest.n >= 2) {
+    slides.push(head("Máximo goleador en un partido") +
+      `<div class="rec-pl">${photoHtml(sBest.name, "md")}<div class="who"><span class="nm">${esc(sBest.name)}</span><span class="gl"><b>${sBest.n}</b>${sBest.n === 1 ? "GOL" : "GOLES"}</span></div></div>` +
+      recRow(sBest.m) + recCap(sBest.m, sK > 1 ? `Pasó ${sK} veces` : ""));
+  }
+  const runs = {Cabe:{len:0}, Verga:{len:0}}; let cur = null, len = 0, from = 0;
+  L.forEach((m, i) => {
+    if (m.ganador === cur) len++; else { cur = m.ganador; len = 1; from = i; }
+    const r = runs[cur]; if (r && len >= r.len) runs[cur] = {len, from:L[from].n, to:m.n, live: i === L.length - 1};
+  });
+  if (cur && runs[cur]) runs[cur].live = runs[cur].to === L[L.length-1].n && len === runs[cur].len;
+  if (runs.Cabe.len || runs.Verga.len) {
+    const top = runs.Cabe.len === runs.Verga.len ? null : (runs.Cabe.len > runs.Verga.len ? "Cabe" : "Verga");
+    const mx = Math.max(runs.Cabe.len, runs.Verga.len, 1);
+    const row = (who, cls) => { const r = runs[who]; return `<div class="row"><span class="who"><i class="dot ${cls}"></i>${who}</span><span class="pips">${Array.from({length:mx}, (_,i) => `<i class="${i < r.len ? cls : ""}"></i>`).join("")}</span><span class="val">${r.len}</span>
+        <span class="rg">${r.len ? (r.len === 1 ? `Partido #${r.from}` : `Del #${r.from} al #${r.to}`) + (r.live && r.len > 1 ? ` · <em>en curso</em>` : "") : "Sin victorias"}</span></div>`; };
+    slides.push(head("Racha invicta más larga") +
+      `<div class="rec-big"><b class="${top === "Cabe" ? "c" : top === "Verga" ? "v" : "g"}">${mx}</b><span>${top ? `victorias seguidas de <strong>${top}</strong>` : "victorias seguidas, empatados"}</span></div>` +
+      `<div class="rec-st">${row("Cabe","c")}${row("Verga","v")}</div>`);
+  }
+  ["Cabe", "Verga"].forEach(who => {
+    const riv = who === "Cabe" ? "Verga" : "Cabe";
+    const d = bestBy(L.filter(m => m.ganador === riv && !m.penales), mar);
+    if (!d) return;
+    slides.push(head(`Peor derrota de ${who}`) +
+      `<div class="rec-big"><b class="${riv === "Cabe" ? "c" : "v"}">−${d.v}</b><span>perdió contra <strong>${riv}</strong> por ${gl(d.v)}</span></div>` +
+      recRow(d.m) + recCap(d.m, vecesTxt(d.k)));
+  });
+  return slides;
+}
+function recShow(i, restart){
+  const host = $("#recs"); if (!host) return;
+  const items = $$(".rec", host), dots = $$("#recDots button");
+  if (!items.length) return;
+  const prev = recIdx;
+  recIdx = ((i % items.length) + items.length) % items.length;
+  items.forEach((el, j) => { el.classList.toggle("on", j === recIdx); el.classList.toggle("out", j === prev && j !== recIdx); el.setAttribute("aria-hidden", j === recIdx ? "false" : "true"); });
+  dots.forEach((d, j) => {
+    d.classList.remove("on"); d.classList.toggle("done", j < recIdx); d.setAttribute("aria-selected", j === recIdx ? "true" : "false");
+    if (j === recIdx) { void d.offsetWidth; d.classList.add("on"); }
+  });
+  if (recTimer) { clearTimeout(recTimer); recTimer = null; }
+  if (items.length > 1 && matchMedia("(prefers-reduced-motion: reduce)").matches) recTimer = setTimeout(() => recShow(recIdx + 1), REC_MS);
+}
+function renderRecords(L){
+  const host = $("#recs"); if (!host) return;
+  const slides = buildRecords(L);
+  const html = slides.length
+    ? slides.map((h, i) => `<div class="rec" data-i="${i}" role="group" aria-roledescription="récord">${h}</div>`).join("")
+    : `<div class="rec on"><div class="rec-empty">Los récords aparecen cuando haya partidos cargados.</div></div>`;
+  if (html === recSig) return;
+  recSig = html;
+  host.innerHTML = html;
+  wireCrests(host);
+  $$(".ph img", host).forEach(img => img.addEventListener("error", () => { img.remove(); }, {once:true}));
+  const dots = $("#recDots");
+  dots.innerHTML = slides.length > 1 ? slides.map((_, i) => `<button type="button" role="tab" aria-label="Récord ${i+1} de ${slides.length}"><i></i></button>`).join("") : "";
+  dots.hidden = slides.length < 2;
+  if (!slides.length) return;
+  recShow(Math.min(recIdx, slides.length - 1));
+}
+function wireRecords(){
+  const dots = $("#recDots"), host = $("#recs"); if (!dots || !host) return;
+  dots.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; recShow($$("button", dots).indexOf(b)); });
+  dots.addEventListener("animationend", e => { if (e.target.parentElement && e.target.parentElement.classList.contains("on")) recShow(recIdx + 1); });
+  let x0 = null;
+  host.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, {passive:true});
+  host.addEventListener("touchend", e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) recShow(recIdx + (dx < 0 ? 1 : -1)); }, {passive:true});
+}
 function renderDash(){
   if (view !== "dash") return;
   const P = palette();
@@ -1226,7 +1385,8 @@ function renderDash(){
     kpi("Penales ganados", pair(pC, pV), `${pens.length} empates definidos por penales`) +
     kpi("Racha actual", curTxt, st.last ? (st.run === 1 ? "Ganó el último partido" : `Lleva ${st.run} victorias seguidas`) : "") +
     tvBug(lastM);
-  $("#dwTot").textContent = N; $("#dpTot").textContent = pens.length;
+  $("#dwTot").textContent = N;
+  renderRecords(L);
 
   wireCrests($("#kpis"));
   const avgC = N ? gC/N : 0, avgV = N ? gV/N : 0, gmax = Math.max(gC, gV, 1);
@@ -1282,7 +1442,6 @@ function renderDash(){
       generateLabels: ch => ch.data.labels.map((l,i) => { const d=ch.data.datasets[0].data, t=d[0]+d[1]; return {text:`${l}  ${d[i]}${t?` (${Math.round(d[i]/t*100)}%)`:""}`, fillStyle:[P.c,P.v][i], strokeStyle:[P.c,P.v][i], fontColor:P.ink, pointStyle:"rectRot", index:i}; })}},
       tooltip:{...bo.plugins.tooltip, callbacks:{label:c => { const t=a+b; return ` ${c.label}: ${c.parsed} ${what} (${t?Math.round(c.parsed/t*100):0}%)`; }}}}}});
   donut("chWins", wC, wV, "victorias");
-  donut("chPens", pC, pV, "tandas");
 
   const vs = Array.from(new Set(L.map(m=>m.fifa))).sort((a,b)=>a-b);
   makeChart("chFifa", {type:"bar", data:{labels:vs.map(v=>"FIFA "+v), datasets:[
@@ -1698,6 +1857,7 @@ function renderList(){
     </tr>`; }).join("");
   wireCrests(tb);
 }
+wireRecords();
 ["#q","#fLiga","#fFifa","#fTeam","#fWin","#fPen"].forEach(s => $(s).addEventListener("input", renderList));
 $("#clearF").addEventListener("click", () => { ["#q","#fLiga","#fFifa","#fTeam","#fWin","#fPen"].forEach(s => $(s).value = ""); renderList(); });
 $$(".mt th [data-sort]").forEach(b => b.addEventListener("click", () => { const k = b.dataset.sort; if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = (k === "n" || k === "fifa") ? -1 : 1; } renderList(); }));
@@ -1977,7 +2137,7 @@ function renderLog(){
 setInterval(() => { if (view === "log") renderLog(); }, 60000);
 
 /* ---------- Indicador de versión (verde = al día, rojo = hay versión nueva) ---------- */
-const APP_VERSION = "2026.09.24-1549";
+const APP_VERSION = "2026.09.25-1309";
 function setupVersion(){
   if (!window.PF_STANDALONE) return;
   const b = $("#verBtn"); b.hidden = false;
