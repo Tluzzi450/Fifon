@@ -526,50 +526,55 @@ body.locked .tabs, body.locked [data-view-panel]{display:none!important}
 .progress{height:0.375rem;background:var(--surface-3);border-radius:0.1875rem;overflow:hidden;margin-top:0.625rem}
 .progress i{display:block;height:100%;background:var(--grass);width:0}
 /* Banner rotativo de récords */
-.recs-card{display:flex;flex-direction:column;gap:0.75rem;overflow:hidden}
-.recs{display:grid;flex:1;align-items:center;touch-action:pan-y}
-.rec{grid-area:1/1;display:flex;flex-direction:column;gap:0.625rem;min-width:0;opacity:0;visibility:hidden;transform:translateX(1.75rem);transition:opacity .6s ease,transform .6s ease,visibility 0s linear .6s}
-.rec.on{opacity:1;visibility:visible;transform:none;transition:opacity .6s ease .15s,transform .6s ease .15s,visibility 0s}
-.rec.out{transform:translateX(-1.75rem)}
-.rec-k{display:flex;align-items:center;gap:0.5rem;font-family:var(--display);font-weight:700;font-size:0.8125rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.recs-card{display:flex;flex-direction:column;gap:0.875rem;overflow:hidden}
+.recs{display:grid;flex:1;touch-action:pan-y}
+.rec{grid-area:1/1;display:flex;flex-direction:column;min-width:0;opacity:0;visibility:hidden;transform:translateX(2rem);transition:opacity .7s ease,transform .7s ease,visibility 0s linear .7s}
+.rec.on{opacity:1;visibility:visible;transform:none;transition:opacity .7s ease .2s,transform .7s ease .2s,visibility 0s}
+.rec.out{transform:translateX(-2rem)}
+.rec-k{display:flex;align-items:center;gap:0.5625rem;font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap;min-width:0}
 .rec-k::before{content:"";width:0.25rem;height:0.875rem;background:linear-gradient(180deg,var(--gold),var(--grass));transform:skewX(-18deg);flex:none}
-.rec-k .sc{margin-left:auto;font-weight:600;letter-spacing:.12em;color:var(--ink-2);opacity:.75;font-size:0.6875rem;white-space:nowrap}
-.rec-big{display:flex;align-items:baseline;gap:0.625rem;flex-wrap:wrap;min-width:0}
-.rec-big b{font-family:var(--display);font-weight:700;font-size:3rem;line-height:.95;color:var(--ink);font-variant-numeric:tabular-nums;text-shadow:0 0 1.5rem rgba(233,196,106,.25)}
+.rec-k span{overflow:hidden;text-overflow:ellipsis}
+.rec-body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:0.875rem;padding-top:0.875rem;min-width:0}
+.rec-big{display:flex;align-items:center;gap:0.875rem;min-width:0}
+.rec-big b{flex:none;font-family:var(--display);font-weight:700;font-size:3.25rem;line-height:.9;color:var(--ink);font-variant-numeric:tabular-nums;text-shadow:0 0 1.5rem rgba(233,196,106,.22)}
 .rec-big b.c{color:var(--cabe-2)} .rec-big b.v{color:var(--verga-2)} .rec-big b.g{color:var(--gold)}
-.rec-big span{color:var(--ink-2);font-size:0.9375rem;line-height:1.3}
-.rec-big span strong{color:var(--ink);font-weight:600}
-.rec .tv-row .tv-team{font-size:1.125rem;padding:0.25rem 0.5rem}
-.rec .tv-row .tv-team .crest{width:1.75rem;height:1.75rem}
+.rec-big span{color:var(--ink-2);font-size:0.9375rem;line-height:1.3;min-width:0}
+.rec-big span strong{display:block;color:var(--ink);font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:.04em;line-height:1.15}
+.rec .tv-row .tv-team{font-size:1.125rem;padding:0.3125rem 0.5rem}
+.rec .tv-row .tv-team .crest{width:1.875rem;height:1.875rem}
 .rec .tv-score{font-size:1.375rem}
-.rec-cap{font-size:0.8125rem;color:var(--ink-2);display:flex;justify-content:space-between;gap:0.5rem;white-space:nowrap;overflow:hidden}
+.rec-cap{font-size:0.8125rem;color:var(--ink-2);display:flex;justify-content:space-between;gap:0.5rem;white-space:nowrap;overflow:hidden;margin-top:-0.375rem}
 .rec-cap span{overflow:hidden;text-overflow:ellipsis}
 .rec-cap .note{color:var(--gold);opacity:.9;flex:none}
 .rec-pl{display:flex;align-items:center;gap:0.875rem;min-width:0}
-.rec-pl .ph.md{width:4rem;height:5.25rem;font-size:1.125rem}
-.rec-pl .who{min-width:0;display:flex;flex-direction:column;gap:0.125rem}
+.rec-pl .ph.md{width:3.75rem;height:4.875rem;font-size:1.125rem}
+.rec-pl .who{min-width:0;display:flex;flex-direction:column;gap:0.25rem}
 .rec-pl .who .nm{font-family:var(--display);font-weight:700;font-size:1.375rem;line-height:1.1;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rec-pl .who .gl{font-family:var(--display);font-size:1.0625rem;color:var(--gold);letter-spacing:.06em}
-.rec-pl .who .gl b{font-size:2rem;margin-right:0.25rem}
-.rec-st{display:flex;flex-direction:column;gap:0.625rem}
-.rec-st .row{display:grid;grid-template-columns:4.5rem minmax(0,1fr) auto;align-items:center;gap:0.625rem}
+.rec-pl .who .gl{display:flex;align-items:baseline;gap:0.375rem;font-family:var(--display);font-size:0.9375rem;color:var(--ink-2);letter-spacing:.1em;text-transform:uppercase}
+.rec-pl .who .gl b{font-size:2.25rem;line-height:1;color:var(--gold);letter-spacing:0}
+.rec-st{display:flex;flex-direction:column;gap:0.75rem}
+.rec-st .row{display:grid;grid-template-columns:4.75rem minmax(0,1fr) 2rem;grid-template-rows:auto auto;align-items:center;column-gap:0.625rem;row-gap:0.1875rem}
 .rec-st .who{display:flex;align-items:center;gap:0.375rem;font-weight:600}
 .rec-st .pips{display:flex;gap:0.1875rem;min-width:0}
-.rec-st .pips i{flex:1;max-width:1.25rem;height:0.875rem;border-radius:2px;background:rgba(255,255,255,.07);transform:skewX(-14deg)}
+.rec-st .pips i{flex:1;max-width:2rem;height:0.875rem;border-radius:2px;background:rgba(255,255,255,.07);transform:skewX(-14deg)}
 .rec-st .pips i.c{background:linear-gradient(135deg,var(--cabe),var(--cabe-2))} .rec-st .pips i.v{background:linear-gradient(135deg,var(--verga),var(--verga-2))}
-.rec-st .val{font-family:var(--display);font-weight:700;font-size:1.5rem;font-variant-numeric:tabular-nums;text-align:right}
-.rec-st .rg{grid-column:2 / -1;margin-top:-0.375rem;font-size:0.75rem;color:var(--ink-2)}
+.rec-st .val{font-family:var(--display);font-weight:700;font-size:1.375rem;font-variant-numeric:tabular-nums;text-align:right}
+.rec-st .rg{grid-column:2 / -1;font-size:0.75rem;color:var(--ink-2)}
 .rec-st .rg em{font-style:normal;color:var(--grass)}
 .rec-empty{color:var(--ink-2);text-align:center;padding:2rem 0}
-.rec-dots{display:flex;gap:0.3125rem}
+.rec-foot{display:flex;align-items:center;gap:0.75rem}
+.rec-foot .sc{font-family:var(--display);font-weight:600;font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);opacity:.75;white-space:nowrap}
+.rec-dots{flex:1;display:flex;gap:0.3125rem}
 .rec-dots button{flex:1;height:0.25rem;padding:0;border:0;border-radius:2px;background:rgba(255,255,255,.12);cursor:pointer;overflow:hidden;position:relative}
 .rec-dots button::after{content:"";position:absolute;inset:-0.5rem 0}
 .rec-dots button i{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--grass),var(--gold))}
 .rec-dots button.done i{transform:scaleX(1);opacity:.45}
-.rec-dots button.on i{animation:recfill 10s linear forwards}
-.recs-card:hover .rec-dots button.on i,.recs-card:focus-within .rec-dots button.on i{animation-play-state:paused}
+.rec-dots button.on i{animation:recfill var(--rec-dur,5s) linear forwards}
+.recs-card.paused .rec-dots button.on i{animation-play-state:paused}
 @keyframes recfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+  .rec{transform:none!important;transition:opacity .6s ease,visibility 0s linear .6s!important}.rec.on{transition:opacity .6s ease .15s,visibility 0s!important}
+  .rec-dots button.on i{animation:recfill var(--rec-dur,5s) linear forwards!important}}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}code{font-size:.92em;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px}</style>
 <script>
@@ -688,7 +693,7 @@ try {
       </article>
       <article class="hud turf card c-pens span-2 half recs-card" aria-roledescription="carrusel" aria-label="Récords de la serie"><span class="chalk"></span>
         <div class="recs" id="recs"></div>
-        <div class="rec-dots" id="recDots" role="tablist"></div>
+        <div class="rec-foot"><div class="rec-dots" id="recDots" role="tablist"></div><span class="sc" id="recScope"></span></div>
       </article>
       <article class="hud turf card c-fifa span-2"><span class="chalk"></span>
         <h3>Por versión de FIFA</h3>
@@ -1239,8 +1244,8 @@ function tvBug(m){
   </div>`;
 }
 /* ---------- Banner de récords ---------- */
-let recIdx = 0, recSig = "", recTimer = null;
-const REC_MS = 10000;
+let recIdx = 0, recSig = "", recTimer = null, recStart = 0, recLeft = 0, recPaused = false;
+const REC_MS = 5000;
 function recRow(m){
   const cw = m.ganador === "Cabe";
   return `<div class="tv-row">
@@ -1260,8 +1265,7 @@ function bestBy(list, score){
 }
 function buildRecords(L){
   const slides = [];
-  const scope = fifaSel === "all" ? "Histórico" : `FIFA ${fifaSel}`;
-  const head = t => `<div class="rec-k">${t}<span class="sc">${scope}</span></div>`;
+  const head = t => `<div class="rec-k"><span>${t}</span></div><div class="rec-body">`;
   const gl = n => `${n} ${n === 1 ? "gol" : "goles"}`;
   const tot = m => (+m.golesCabe||0) + (+m.golesVerga||0);
   const mar = m => Math.abs((+m.golesCabe||0) - (+m.golesVerga||0));
@@ -1269,14 +1273,14 @@ function buildRecords(L){
   const g = bestBy(L.filter(m => !m.penales), mar);
   if (g && g.v > 0) {
     const w = g.m.ganador, l = w === "Cabe" ? "Verga" : "Cabe";
-    slides.push(head("Goleada más grande") +
-      `<div class="rec-big"><b class="${w === "Cabe" ? "c" : "v"}">+${g.v}</b><span><strong>${w}</strong> le ganó a ${l} por ${gl(g.v)}</span></div>` +
+    slides.push(head("Mayor goleada") +
+      `<div class="rec-big"><b class="${w === "Cabe" ? "c" : "v"}">+${g.v}</b><span><strong>${w}</strong>le ganó a ${l} por ${gl(g.v)}</span></div>` +
       recRow(g.m) + recCap(g.m, vecesTxt(g.k)));
   }
   const t = bestBy(L, tot);
   if (t && t.v > 0) {
     slides.push(head("Partido con más goles") +
-      `<div class="rec-big"><b class="g">${t.v}</b><span>goles en un solo partido</span></div>` +
+      `<div class="rec-big"><b class="g">${t.v}</b><span><strong>Goles</strong>en un solo partido</span></div>` +
       recRow(t.m) + recCap(t.m, vecesTxt(t.k)));
   }
   let sBest = null, sK = 0;
@@ -1286,7 +1290,7 @@ function buildRecords(L){
     cnt.forEach(e => { if (!sBest || e.n > sBest.n) { sBest = {...e, m}; sK = 1; } else if (e.n === sBest.n) { sBest = {...e, m}; sK++; } });
   });
   if (sBest && sBest.n >= 2) {
-    slides.push(head("Máximo goleador en un partido") +
+    slides.push(head("Goleador de un partido") +
       `<div class="rec-pl">${photoHtml(sBest.name, "md")}<div class="who"><span class="nm">${esc(sBest.name)}</span><span class="gl"><b>${sBest.n}</b>${sBest.n === 1 ? "GOL" : "GOLES"}</span></div></div>` +
       recRow(sBest.m) + recCap(sBest.m, sK > 1 ? `Pasó ${sK} veces` : ""));
   }
@@ -1301,21 +1305,33 @@ function buildRecords(L){
     const mx = Math.max(runs.Cabe.len, runs.Verga.len, 1);
     const row = (who, cls) => { const r = runs[who]; return `<div class="row"><span class="who"><i class="dot ${cls}"></i>${who}</span><span class="pips">${Array.from({length:mx}, (_,i) => `<i class="${i < r.len ? cls : ""}"></i>`).join("")}</span><span class="val">${r.len}</span>
         <span class="rg">${r.len ? (r.len === 1 ? `Partido #${r.from}` : `Del #${r.from} al #${r.to}`) + (r.live && r.len > 1 ? ` · <em>en curso</em>` : "") : "Sin victorias"}</span></div>`; };
-    slides.push(head("Racha invicta más larga") +
-      `<div class="rec-big"><b class="${top === "Cabe" ? "c" : top === "Verga" ? "v" : "g"}">${mx}</b><span>${top ? `victorias seguidas de <strong>${top}</strong>` : "victorias seguidas, empatados"}</span></div>` +
+    slides.push(head("Racha más larga") +
+      `<div class="rec-big"><b class="${top === "Cabe" ? "c" : top === "Verga" ? "v" : "g"}">${mx}</b><span>${top ? `<strong>${top}</strong>victorias seguidas` : "<strong>Empatados</strong>victorias seguidas"}</span></div>` +
       `<div class="rec-st">${row("Cabe","c")}${row("Verga","v")}</div>`);
   }
   ["Cabe", "Verga"].forEach(who => {
     const riv = who === "Cabe" ? "Verga" : "Cabe";
     const d = bestBy(L.filter(m => m.ganador === riv && !m.penales), mar);
     if (!d) return;
-    slides.push(head(`Peor derrota de ${who}`) +
-      `<div class="rec-big"><b class="${riv === "Cabe" ? "c" : "v"}">−${d.v}</b><span>perdió contra <strong>${riv}</strong> por ${gl(d.v)}</span></div>` +
+    slides.push(head(`Peor derrota · ${who}`) +
+      `<div class="rec-big"><b class="${riv === "Cabe" ? "c" : "v"}">−${d.v}</b><span><strong>${who}</strong>perdió con ${riv} por ${gl(d.v)}</span></div>` +
       recRow(d.m) + recCap(d.m, vecesTxt(d.k)));
   });
-  return slides;
+  return slides.map(h => h + "</div>");
 }
-function recShow(i, restart){
+function recSchedule(ms){
+  if (recTimer) { clearTimeout(recTimer); recTimer = null; }
+  recLeft = ms; recStart = performance.now();
+  if (recPaused || document.hidden || $$("#recs .rec").length < 2) return;
+  recTimer = setTimeout(() => recShow(recIdx + 1), ms);
+}
+function recPause(on){
+  const card = $(".recs-card"); if (!card || recPaused === on) return;
+  recPaused = on; card.classList.toggle("paused", on);
+  if (on) { if (recTimer) { clearTimeout(recTimer); recTimer = null; } recLeft = Math.max(0, recLeft - (performance.now() - recStart)); }
+  else recSchedule(recLeft || REC_MS);
+}
+function recShow(i){
   const host = $("#recs"); if (!host) return;
   const items = $$(".rec", host), dots = $$("#recDots button");
   if (!items.length) return;
@@ -1326,8 +1342,7 @@ function recShow(i, restart){
     d.classList.remove("on"); d.classList.toggle("done", j < recIdx); d.setAttribute("aria-selected", j === recIdx ? "true" : "false");
     if (j === recIdx) { void d.offsetWidth; d.classList.add("on"); }
   });
-  if (recTimer) { clearTimeout(recTimer); recTimer = null; }
-  if (items.length > 1 && matchMedia("(prefers-reduced-motion: reduce)").matches) recTimer = setTimeout(() => recShow(recIdx + 1), REC_MS);
+  recSchedule(REC_MS);
 }
 function renderRecords(L){
   const host = $("#recs"); if (!host) return;
@@ -1340,16 +1355,22 @@ function renderRecords(L){
   host.innerHTML = html;
   wireCrests(host);
   $$(".ph img", host).forEach(img => img.addEventListener("error", () => { img.remove(); }, {once:true}));
-  const dots = $("#recDots");
+  const sc = $("#recScope"); if (sc) sc.textContent = fifaSel === "all" ? "Histórico" : `FIFA ${fifaSel}`;
+  const dots = $("#recDots"); dots.style.setProperty("--rec-dur", REC_MS / 1000 + "s");
   dots.innerHTML = slides.length > 1 ? slides.map((_, i) => `<button type="button" role="tab" aria-label="Récord ${i+1} de ${slides.length}"><i></i></button>`).join("") : "";
   dots.hidden = slides.length < 2;
   if (!slides.length) return;
   recShow(Math.min(recIdx, slides.length - 1));
 }
 function wireRecords(){
-  const dots = $("#recDots"), host = $("#recs"); if (!dots || !host) return;
-  dots.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; recShow($$("button", dots).indexOf(b)); });
-  dots.addEventListener("animationend", e => { if (e.target.parentElement && e.target.parentElement.classList.contains("on")) recShow(recIdx + 1); });
+  const dots = $("#recDots"), host = $("#recs"), card = $(".recs-card"); if (!dots || !host || !card) return;
+  dots.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; b.blur(); recShow($$("button", dots).indexOf(b)); });
+  card.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") recPause(true); });
+  card.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") recPause(false); });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) { if (recTimer) { clearTimeout(recTimer); recTimer = null; } }
+    else recShow(recIdx);
+  });
   let x0 = null;
   host.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, {passive:true});
   host.addEventListener("touchend", e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) recShow(recIdx + (dx < 0 ? 1 : -1)); }, {passive:true});
@@ -2137,7 +2158,7 @@ function renderLog(){
 setInterval(() => { if (view === "log") renderLog(); }, 60000);
 
 /* ---------- Indicador de versión (verde = al día, rojo = hay versión nueva) ---------- */
-const APP_VERSION = "2026.09.25-1309";
+const APP_VERSION = "2026.09.25-1321";
 function setupVersion(){
   if (!window.PF_STANDALONE) return;
   const b = $("#verBtn"); b.hidden = false;
