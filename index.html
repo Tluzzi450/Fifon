@@ -572,16 +572,37 @@ body.locked .tabs, body.locked [data-view-panel]{display:none!important}
 .rec-dots button.on i{animation:recfill var(--rec-dur,5s) linear forwards}
 .recs-card.paused .rec-dots button.on i{animation-play-state:paused}
 @keyframes recfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-/* Filtros del dashboard */
-.dash-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:0.625rem 0.75rem;align-items:end;padding:0.75rem 0.875rem;margin-bottom:0.875rem}
-.dash-tools .field label{font-family:var(--display);font-size:0.6875rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
-.dash-tools .field select{min-height:2.375rem;padding:0.375rem 0.5rem;cursor:pointer}
-.dash-tools .field.on select{border-color:var(--grass);box-shadow:0 0 0 1px var(--grass) inset;color:var(--ink)}
-.dash-tools .field.on label{color:var(--grass)}
-.dt-foot{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:0.25rem;min-height:2.375rem;white-space:nowrap}
-.dt-foot #dfCount{font-size:0.8125rem;color:var(--ink-2)}
-.dt-foot #dfCount b{color:var(--gold);font-family:var(--display);font-size:1rem}
-@media (max-width:980px){.dash-tools{grid-template-columns:repeat(2,minmax(0,1fr))}.dt-foot{grid-column:1 / -1;flex-direction:row;align-items:center;justify-content:space-between;min-height:0}}
+/* Filtros propios de cada indicador */
+.card > .cf-btn,.kpi > .cf-btn{position:absolute;top:0.625rem;right:0.625rem;z-index:2}
+.cf-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.1875rem;height:1.75rem;min-width:1.75rem;padding:0 0.375rem;border:1px solid var(--line);border-radius:0.25rem;background:rgba(0,0,0,.18);color:var(--ink-2);cursor:pointer;opacity:.75;transition:opacity .2s,border-color .2s,color .2s,background .2s}
+.cf-btn svg{width:0.9375rem;height:0.9375rem;flex:none}
+.cf-btn:hover,.cf-btn:focus-visible,.cf-btn[aria-expanded="true"]{opacity:1;color:var(--ink);border-color:var(--grass)}
+.cf-btn.on{opacity:1;color:#04130c;background:var(--grass);border-color:var(--grass)}
+.cf-btn b{font-family:var(--display);font-size:0.75rem;line-height:1}
+.card > h3,.card > .card-head{padding-right:2.5rem}
+.kpi > .k{padding-right:2.125rem}
+.recs-card .rec-k{padding-right:2.25rem}
+.tv-top .cf-btn{height:1.375rem;min-width:1.375rem;padding:0 0.25rem;margin-left:0.375rem}
+.tv-top .cf-btn svg{width:0.75rem;height:0.75rem}
+.cf-tags{display:flex;flex-wrap:wrap;gap:0.3125rem;margin:-0.375rem 0 0.75rem}
+.cf-tags:empty{display:none}
+.cf-tag{display:inline-flex;align-items:center;gap:0.375rem;padding:0.1875rem 0.5625rem;border-radius:999px;border:1px solid rgba(46,204,113,.45);background:rgba(46,204,113,.12);color:var(--ink);font:inherit;font-size:0.75rem;cursor:pointer;max-width:100%}
+.cf-tag span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cf-tag i{font-style:normal;opacity:.7;font-size:0.875rem;line-height:1}
+.cf-tag:hover{border-color:var(--grass)}
+.cf-pop{position:fixed;z-index:90;width:min(20rem,calc(100vw - 1.5rem));padding:0.875rem;background:linear-gradient(180deg,var(--surface-2),var(--surface));box-shadow:0 1.25rem 3rem rgba(0,0,0,.6),0 0 0 1px rgba(46,204,113,.25)}
+.cf-pop.sheet{left:0.5rem!important;right:0.5rem;top:auto!important;bottom:0.5rem;width:auto}
+.cf-h{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem}
+.cf-h div{flex:1;min-width:0;display:flex;flex-direction:column}
+.cf-h small{font-family:var(--display);font-size:0.6875rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grass)}
+.cf-h b{font-family:var(--display);font-size:1rem;text-transform:uppercase;letter-spacing:.06em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cf-x{border:0;background:none;color:var(--ink-2);font-size:1.5rem;line-height:1;cursor:pointer;padding:0 0.25rem}
+.cf-f{display:grid;gap:0.625rem}
+.cf-f .field label{font-family:var(--display);font-size:0.6875rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.cf-f .field.on label{color:var(--grass)}
+.cf-f .field.on select{border-color:var(--grass)}
+.cf-f select{min-height:2.375rem;cursor:pointer}
+.cf-a{display:flex;justify-content:space-between;gap:0.5rem;margin-top:0.875rem}
 /* Búsqueda de escudos */
 .ck-res{grid-template-columns:repeat(auto-fill,minmax(7.5rem,1fr))}
 .ck-res img{aspect-ratio:1/1;object-fit:contain;object-position:50% 50%;padding:0.75rem;background:radial-gradient(circle at 50% 45%,#2b4d42,#0d241c 75%)}
@@ -655,13 +676,6 @@ try {
   <!-- DASHBOARD -->
   <section id="view-dash" data-view-panel="dash">
     <div class="filters" id="fifaFilter" aria-label="Filtrar por FIFA"></div>
-    <div class="hud dash-tools" id="dashTools" aria-label="Filtros de los indicadores">
-      <div class="field"><label for="dfLiga">Liga</label><select id="dfLiga"></select></div>
-      <div class="field"><label for="dfTeam">Equipo</label><select id="dfTeam"></select></div>
-      <div class="field"><label for="dfLast">Período</label><select id="dfLast"><option value="">Todos los partidos</option><option value="5">Últimos 5</option><option value="10">Últimos 10</option><option value="20">Últimos 20</option><option value="30">Últimos 30</option><option value="50">Últimos 50</option></select></div>
-      <div class="field"><label for="dfPen">Definición</label><select id="dfPen"><option value="">Todas</option><option value="no">Sin penales</option><option value="si">Solo por penales</option></select></div>
-      <div class="dt-foot"><span id="dfCount"></span><button class="btn ghost" id="dfClear" type="button" hidden>Limpiar filtros</button></div>
-    </div>
 
     <div class="hud board">
       <svg class="board-pitch" viewBox="0 0 1000 170" preserveAspectRatio="none" aria-hidden="true">
@@ -701,62 +715,62 @@ try {
     <div class="kpis" id="kpis"></div>
 
     <div class="grid">
-      <article class="hud turf card c-evo span-6"><span class="chalk"></span>
+      <article class="hud turf card c-evo span-6"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="evo" aria-label="Filtrar este indicador"></button>
         <h3>Cómo viene la serie</h3>
-        <p class="sub">Victorias acumuladas partido a partido</p>
+        <p class="sub">Victorias acumuladas partido a partido</p><div class="cf-tags" data-cf-tags="evo"></div>
         <div class="legend"><span><i class="dot c"></i>Cabe</span><span><i class="dot v"></i>Verga</span></div>
         <div class="cv" style="height:16.25rem"><canvas id="chEvo" aria-label="Victorias acumuladas por partido"></canvas></div>
       </article>
 
-      <article class="hud turf card c-wins span-2 half"><span class="chalk"></span>
+      <article class="hud turf card c-wins span-2 half"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="wins" aria-label="Filtrar este indicador"></button>
         <h3>Victorias</h3>
-        <p class="sub">Reparto del total (incluye penales)</p>
+        <p class="sub">Reparto del total (incluye penales)</p><div class="cf-tags" data-cf-tags="wins"></div>
         <div class="cv card-cv" style="height:13.75rem"><canvas id="chWins" aria-label="Torta de victorias"></canvas><div class="donut-center"><b id="dwTot">0</b><small>partidos</small></div></div>
       </article>
-      <article class="hud turf card c-pens span-2 half recs-card" aria-roledescription="carrusel" aria-label="Récords de la serie"><span class="chalk"></span>
+      <article class="hud turf card c-pens span-2 half recs-card" aria-roledescription="carrusel" aria-label="Récords de la serie"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="recs" aria-label="Filtrar este indicador"></button>
         <div class="recs" id="recs"></div>
         <div class="rec-foot"><div class="rec-dots" id="recDots" role="tablist"></div><span class="sc" id="recScope"></span></div>
       </article>
-      <article class="hud turf card c-fifa span-2"><span class="chalk"></span>
+      <article class="hud turf card c-fifa span-2"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="fifa" aria-label="Filtrar este indicador"></button>
         <h3>Por versión de FIFA</h3>
-        <p class="sub">Victorias en cada juego</p>
+        <p class="sub">Victorias en cada juego</p><div class="cf-tags" data-cf-tags="fifa"></div>
         <div class="legend"><span><i class="dot c"></i>Cabe</span><span><i class="dot v"></i>Verga</span></div>
         <div class="cv" style="height:11.875rem"><canvas id="chFifa" aria-label="Victorias por FIFA"></canvas></div>
       </article>
 
-      <article class="hud turf card c-liga span-4"><span class="chalk"></span>
+      <article class="hud turf card c-liga span-4"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="liga" aria-label="Filtrar este indicador"></button>
         <h3>Victorias por liga</h3>
-        <p class="sub">Ordenado por cantidad de partidos jugados</p>
+        <p class="sub">Ordenado por cantidad de partidos jugados</p><div class="cf-tags" data-cf-tags="liga"></div>
         <div class="legend"><span><i class="dot c"></i>Cabe</span><span><i class="dot v"></i>Verga</span></div>
         <div class="cv" id="cvLiga"><canvas id="chLiga" aria-label="Victorias por liga"></canvas></div>
       </article>
       <div class="stack span-2">
-        <article class="hud turf card c-goles"><span class="chalk"></span>
+        <article class="hud turf card c-goles"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="goles" aria-label="Filtrar este indicador"></button>
           <h3>Goles a favor</h3>
-          <p class="sub">Total, promedio por partido y diferencia</p>
+          <p class="sub">Total, promedio por partido y diferencia</p><div class="cf-tags" data-cf-tags="goles"></div>
           <div class="gl" id="goals"></div>
           <div class="gdiff" id="gdiff"></div>
         </article>
-        <article class="hud turf card c-racha"><span class="chalk"></span>
+        <article class="hud turf card c-racha"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="racha" aria-label="Filtrar este indicador"></button>
           <h3>Racha máxima</h3>
-          <p class="sub">Victorias seguidas, récord de cada uno</p>
+          <p class="sub">Victorias seguidas, récord de cada uno</p><div class="cf-tags" data-cf-tags="racha"></div>
           <div class="sbars" id="streaks"></div>
         </article>
       </div>
 
-      <article class="hud turf card c-tw span-2 half"><span class="chalk"></span>
+      <article class="hud turf card c-tw span-2 half"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="tw" aria-label="Filtrar este indicador"></button>
         <h3>Equipos más ganadores</h3>
-        <p class="sub">2 o más victorias · tocá un equipo para ver su ficha</p>
+        <p class="sub" id="twSub">2 o más victorias · tocá un equipo para ver su ficha</p><div class="cf-tags" data-cf-tags="tw"></div>
         <div class="trows" id="teamW"></div>
       </article>
-      <article class="hud turf card c-tl span-2 half"><span class="chalk"></span>
+      <article class="hud turf card c-tl span-2 half"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="tl" aria-label="Filtrar este indicador"></button>
         <h3>Equipos más perdedores</h3>
-        <p class="sub">2 o más derrotas · color = quién perdió con ese equipo</p>
+        <p class="sub" id="tlSub">2 o más derrotas · color = quién perdió con ese equipo</p><div class="cf-tags" data-cf-tags="tl"></div>
         <div class="trows" id="teamL"></div>
       </article>
-      <article class="hud turf card c-reg span-2 half"><span class="chalk"></span>
+      <article class="hud turf card c-reg span-2 half"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="reg" aria-label="Filtrar este indicador"></button>
         <h3>Regularidad y balance</h3>
-        <p class="sub">Qué tan parejo juega cada uno y un balance general de la serie</p>
+        <p class="sub">Qué tan parejo juega cada uno y un balance general de la serie</p><div class="cf-tags" data-cf-tags="reg"></div>
         <div class="legend"><span><i class="dot c"></i>Cabe</span><span><i class="dot v"></i>Verga</span></div>
         <div class="cv" style="height:15rem"><canvas id="chRadar" aria-label="Radar de rendimiento"></canvas></div>
         <div class="regtab" id="regTab"></div>
@@ -766,9 +780,9 @@ try {
           <p><b>Puntos:</b> 3 por ganar en los 90', 2 por ganar por penales, 1 por perder por penales.</p>
         </details>
       </article>
-      <article class="hud turf card c-gol span-2"><span class="chalk"></span>
+      <article class="hud turf card c-gol span-2"><span class="chalk"></span><button type="button" class="cf-btn" data-cf="gol" aria-label="Filtrar este indicador"></button>
         <div class="card-head"><h3>Goleadores</h3></div>
-        <p class="sub" id="golSub">Goles registrados</p>
+        <p class="sub" id="golSub">Goles registrados</p><div class="cf-tags" data-cf-tags="gol"></div>
         <div class="scbox"><table class="sctable"><thead><tr><th class="pos">#</th><th>Jugador</th><th class="g">Goles</th></tr></thead><tbody id="scorers"></tbody></table></div>
       </article>
     </div>
@@ -1225,50 +1239,140 @@ function renderFifaFilter(){
   host.innerHTML = `<span class="lbl">FIFA</span>` + [["all","Todos"], ...vs.map(v => [String(v), "FIFA " + v])]
     .map(([v,l]) => `<button class="chip" type="button" data-f="${v}" aria-pressed="${String(fifaSel)===v}">${l}</button>`).join("");
   $$(".chip", host).forEach(b => b.addEventListener("click", () => { fifaSel = b.dataset.f; renderFifaFilter(); renderDash(); }));
-  renderDashTools();
 }
-const dashF = {liga:"", team:"", last:"", pen:""};
-function dashFilter(all){
-  let L = fifaSel === "all" ? all : all.filter(m => String(m.fifa) === String(fifaSel));
-  if (dashF.liga) L = L.filter(m => fold(m.liga) === dashF.liga);
-  if (dashF.team) L = L.filter(m => slug(m.equipoCabe) === dashF.team || slug(m.equipoVerga) === dashF.team);
-  if (dashF.pen) L = L.filter(m => dashF.pen === "si" ? m.penales : !m.penales);
-  if (dashF.last) L = L.slice(-Number(dashF.last));
+/* ---------- Filtros propios de cada indicador ---------- */
+const CF_PARAMS = {liga:"Liga", team:"Equipo", last:"Período", pen:"Definición", who:"Jugador", min:"Mínimo", top:"Mostrar"};
+const CF_CARDS = {
+  kN:{t:"Partidos jugados", p:["liga","team","last","pen"]},
+  kPen:{t:"Penales ganados", p:["liga","team","last"]},
+  kRun:{t:"Racha actual", p:["liga","team"]},
+  kLast:{t:"Último partido", p:["liga","team","pen"]},
+  evo:{t:"Cómo viene la serie", p:["liga","team","last","pen"]},
+  wins:{t:"Victorias", p:["liga","team","last","pen"]},
+  recs:{t:"Récords", p:["liga","team","last"]},
+  fifa:{t:"Por versión de FIFA", p:["liga","team","pen"]},
+  liga:{t:"Victorias por liga", p:["team","last","pen","top"]},
+  goles:{t:"Goles a favor", p:["liga","team","last","pen"]},
+  racha:{t:"Racha máxima", p:["liga","team","last"]},
+  tw:{t:"Equipos más ganadores", p:["liga","last","pen","who","min","top"]},
+  tl:{t:"Equipos más perdedores", p:["liga","last","pen","who","min","top"]},
+  reg:{t:"Regularidad y balance", p:["liga","team","last"]},
+  gol:{t:"Goleadores", p:["liga","team","last","top"]}
+};
+const CF_DEF = {tw:{min:"2", top:"10"}, tl:{min:"2", top:"10"}};
+const CF_ICON = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5h17l-6.5 8v5.5l-4 2V13z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>`;
+let cardF = {};
+try { cardF = JSON.parse(localStorage.getItem("pf-card-filters") || "{}") || {}; } catch(e){ cardF = {}; }
+const cfSave = () => { try { localStorage.setItem("pf-card-filters", JSON.stringify(cardF)); } catch(e){} };
+const cfDef = (id, k) => (CF_DEF[id] || {})[k] || "";
+const cfGet = (id, k) => { const v = (cardF[id] || {})[k]; return v != null ? v : cfDef(id, k); };
+const cfOn = (id, k) => cfGet(id, k) !== cfDef(id, k);
+const cfCount = id => CF_CARDS[id].p.filter(k => cfOn(id, k)).length;
+function cfOptions(k){
+  switch (k) {
+    case "liga": { const m = new Map(); matches.forEach(x => { const f = fold(x.liga || ""); if (f && !m.has(f)) m.set(f, norm(x.liga)); }); return [["", "Todas las ligas"], ...Array.from(m).sort((a,b) => a[1].localeCompare(b[1]))]; }
+    case "team": return [["", "Todos los equipos"], ...allTeams().slice().sort((a,b) => a.name.localeCompare(b.name)).map(t => [t.slug, t.name])];
+    case "last": return [["", "Todos los partidos"], ...[5,10,20,30,50].map(n => [String(n), `Últimos ${n}`])];
+    case "pen": return [["", "Todas"], ["no", "Sin penales"], ["si", "Solo por penales"]];
+    case "who": return [["", "Ambos"], ["Cabe", "Solo Cabe"], ["Verga", "Solo Verga"]];
+    case "min": return [["1", "1 o más"], ["2", "2 o más"], ["3", "3 o más"], ["5", "5 o más"]];
+    case "top": return [["5", "Top 5"], ["10", "Top 10"], ["20", "Top 20"], ["", "Todos"]];
+  }
+  return [];
+}
+function cfText(id, k){
+  const v = cfGet(id, k), o = cfOptions(k).find(x => x[0] === v);
+  const t = o ? o[1] : v;
+  return k === "min" ? `${v}+ ${id === "tl" ? "derrotas" : "victorias"}` : k === "top" && !v ? "Todos" : t;
+}
+const cfSummary = id => CF_CARDS[id].p.filter(k => cfOn(id, k)).map(k => cfText(id, k)).join(" · ");
+function cfList(id, base){
+  const g = k => CF_CARDS[id].p.includes(k) ? cfGet(id, k) : "";
+  let L = base; const liga = g("liga"), team = g("team"), pen = g("pen"), last = g("last");
+  if (liga) L = L.filter(m => fold(m.liga || "") === liga);
+  if (team) L = L.filter(m => slug(m.equipoCabe) === team || slug(m.equipoVerga) === team);
+  if (pen) L = L.filter(m => pen === "si" ? m.penales : !m.penales);
+  if (last) L = L.slice(-Number(last));
   return L;
 }
-const dashActive = () => !!(fifaSel !== "all" || dashF.liga || dashF.team || dashF.last || dashF.pen);
-function dashScope(){
-  const parts = [];
-  if (fifaSel !== "all") parts.push(`FIFA ${fifaSel}`);
-  if (dashF.liga) { const o = $(`#dfLiga option[value="${CSS.escape(dashF.liga)}"]`); parts.push(o ? o.textContent : dashF.liga); }
-  if (dashF.team) { const o = $(`#dfTeam option[value="${CSS.escape(dashF.team)}"]`); parts.push(o ? o.textContent.replace(/\s·.*$/, "") : dashF.team); }
-  if (dashF.last) parts.push(`Últimos ${dashF.last}`);
-  if (dashF.pen) parts.push(dashF.pen === "si" ? "Por penales" : "Sin penales");
-  return parts.join(" · ");
+let cfOpen = null;
+function cfBtnHtml(id, extra){
+  const n = cfCount(id);
+  return `<button type="button" class="cf-btn ${extra || ""} ${n ? "on" : ""}" data-cf="${id}" aria-label="Filtrar: ${esc(CF_CARDS[id].t)}" title="${n ? esc(cfSummary(id)) : "Filtrar este indicador"}" aria-expanded="${cfOpen && cfOpen.id === id ? "true" : "false"}">${CF_ICON}${n ? `<b>${n}</b>` : ""}</button>`;
 }
-function renderDashTools(){
-  const fill = (id, opts, key_) => {
-    const el = $(id); if (!el) return;
-    if (dashF[key_] && !opts.some(([v]) => v === dashF[key_])) dashF[key_] = "";
-    el.innerHTML = opts.map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("");
-    el.value = dashF[key_];
-  };
-  const ligas = new Map(); matches.forEach(m => { const k = fold(m.liga || ""); if (!k) return; const e = ligas.get(k) || {name:norm(m.liga), n:0}; e.n++; ligas.set(k, e); });
-  fill("#dfLiga", [["", "Todas las ligas"], ...Array.from(ligas.entries()).sort((a,b) => a[1].name.localeCompare(b[1].name)).map(([k,e]) => [k, e.name])], "liga");
-  fill("#dfTeam", [["", "Todos los equipos"], ...allTeams().slice().sort((a,b) => a.name.localeCompare(b.name)).map(t => [t.slug, `${t.name} · ${t.n}`])], "team");
-  $("#dfLast").value = dashF.last; $("#dfPen").value = dashF.pen;
-  syncDashTools();
+function cfSync(){
+  $$(".card > .cf-btn[data-cf]").forEach(b => {
+    const id = b.dataset.cf, n = cfCount(id);
+    b.innerHTML = CF_ICON + (n ? `<b>${n}</b>` : ""); b.classList.toggle("on", !!n);
+    b.title = n ? cfSummary(id) : "Filtrar este indicador"; b.setAttribute("aria-label", `Filtrar: ${CF_CARDS[id].t}`);
+    b.setAttribute("aria-expanded", cfOpen && cfOpen.id === id ? "true" : "false");
+  });
+  $$("[data-cf-tags]").forEach(h => {
+    const id = h.dataset.cfTags;
+    h.innerHTML = CF_CARDS[id].p.filter(k => cfOn(id, k)).map(k => `<button type="button" class="cf-tag" data-cf-clear="${id}:${k}" title="Quitar este filtro"><span>${esc(cfText(id, k))}</span><i>×</i></button>`).join("");
+  });
+  if (cfOpen) {
+    $$(".cf-f select", cfOpen.pop).forEach(sel => { sel.value = cfGet(cfOpen.id, sel.dataset.k); sel.closest(".field").classList.toggle("on", cfOn(cfOpen.id, sel.dataset.k)); });
+    cfPlace();
+  }
 }
-function syncDashTools(){
-  [["#dfLiga","liga"],["#dfTeam","team"],["#dfLast","last"],["#dfPen","pen"]].forEach(([id,k]) => { const el = $(id); if (el) el.closest(".field").classList.toggle("on", !!dashF[k]); });
-  const b = $("#dfClear"); if (b) b.hidden = !dashActive();
+function cfClose(){
+  if (!cfOpen) return;
+  const id = cfOpen.id; cfOpen.pop.remove(); cfOpen = null;
+  const b = $(`.cf-btn[data-cf="${id}"]`); if (b) b.setAttribute("aria-expanded", "false");
 }
-[["#dfLiga","liga"],["#dfTeam","team"],["#dfLast","last"],["#dfPen","pen"]].forEach(([id,k]) => $(id).addEventListener("change", e => { dashF[k] = e.target.value; syncDashTools(); renderDash(); }));
-$("#dfClear").addEventListener("click", () => { fifaSel = "all"; Object.keys(dashF).forEach(k => dashF[k] = ""); renderFifaFilter(); renderDash(); });
-function teamRows(host, L, teamFn, whoFn, emptyTxt){
+function cfPlace(){
+  if (!cfOpen) return;
+  const pop = cfOpen.pop, b = $(`.cf-btn[data-cf="${cfOpen.id}"]`);
+  if (innerWidth < 640 || !b) { pop.classList.add("sheet"); return; }
+  pop.classList.remove("sheet");
+  const r = b.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
+  let top = r.bottom + 6;
+  if (top + h > innerHeight - 8 && r.top - h - 6 > 8) top = r.top - h - 6;
+  const left = Math.max(12, Math.min(r.right - w, innerWidth - w - 12));
+  pop.style.top = Math.max(8, top) + "px"; pop.style.left = left + "px";
+}
+function cfShow(id){
+  cfClose();
+  const c = CF_CARDS[id]; if (!c) return;
+  const pop = document.createElement("div");
+  pop.className = "hud cf-pop"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", `Filtros: ${c.t}`);
+  pop.innerHTML = `<div class="cf-h"><div><small>Filtrar indicador</small><b>${esc(c.t)}</b></div><button type="button" class="cf-x" aria-label="Cerrar">×</button></div>
+    <div class="cf-f">${c.p.map(k => `<div class="field"><label for="cf_${k}">${CF_PARAMS[k]}</label><select id="cf_${k}" data-k="${k}">${cfOptions(k).map(([v,l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join("")}</select></div>`).join("")}</div>
+    <div class="cf-a"><button type="button" class="btn ghost" data-act="clear">Limpiar</button><button type="button" class="btn primary" data-act="ok">Listo</button></div>`;
+  document.body.appendChild(pop);
+  c.p.forEach(k => {
+    const sel = $(`#cf_${k}`, pop), v = cfGet(id, k);
+    if (!Array.from(sel.options).some(o => o.value === v)) sel.insertAdjacentHTML("beforeend", `<option value="${esc(v)}">${esc(v)}</option>`);
+  });
+  pop.addEventListener("change", e => {
+    const k = e.target.dataset.k; if (!k) return;
+    cardF[id] = {...(cardF[id] || {}), [k]: e.target.value}; cfSave(); renderDash();
+  });
+  pop.addEventListener("click", e => {
+    if (e.target.closest(".cf-x") || e.target.closest('[data-act="ok"]')) { cfClose(); return; }
+    if (e.target.closest('[data-act="clear"]')) { delete cardF[id]; cfSave(); renderDash(); }
+  });
+  cfOpen = {id, pop};
+  cfSync();
+  setTimeout(() => { const f = $("select", pop); if (f) f.focus({preventScroll:true}); }, 0);
+}
+document.addEventListener("click", e => {
+  const t = e.target.closest(".cf-tag");
+  if (t) { const [id, k] = t.dataset.cfClear.split(":"); cardF[id] = {...(cardF[id] || {}), [k]: cfDef(id, k)}; cfSave(); renderDash(); return; }
+  const b = e.target.closest(".cf-btn[data-cf]");
+  if (b) { e.stopPropagation(); if (cfOpen && cfOpen.id === b.dataset.cf) cfClose(); else cfShow(b.dataset.cf); }
+});
+document.addEventListener("pointerdown", e => { if (cfOpen && !cfOpen.pop.contains(e.target) && !e.target.closest(".cf-btn")) cfClose(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && cfOpen) cfClose(); });
+addEventListener("scroll", () => cfPlace(), {passive:true});
+addEventListener("resize", () => cfPlace());
+function teamRows(host, L, teamFn, whoFn, emptyTxt, o){
+  o = o || {}; const min = +o.min || 2, top = +o.top || 0;
+  if (o.who) L = L.filter(m => whoFn(m) === o.who);
   const byTeam = new Map();
   L.forEach(m => { const t = norm(teamFn(m)); if (!t) return; const k = slug(t); const e = byTeam.get(k) || {name:t, Cabe:0, Verga:0}; e[whoFn(m)]++; byTeam.set(k, e); });
-  const rows = Array.from(byTeam.values()).filter(e => e.Cabe+e.Verga >= 2).sort((a,b)=>(b.Cabe+b.Verga)-(a.Cabe+a.Verga) || a.name.localeCompare(b.name)).slice(0,10);
+  const rows = Array.from(byTeam.values()).filter(e => e.Cabe+e.Verga >= min).sort((a,b)=>(b.Cabe+b.Verga)-(a.Cabe+a.Verga) || a.name.localeCompare(b.name)).slice(0, top || undefined);
   const max = rows.reduce((m,r)=>Math.max(m, r.Cabe+r.Verga), 1);
   host.innerHTML = rows.length ? rows.map(r => {
     const t = r.Cabe + r.Verga;
@@ -1291,11 +1395,12 @@ function abbr(name){
   if (w.length === 2) return (w[0][0] + w[1].slice(0,2)).toUpperCase();
   return (w[0][0] + w[1][0] + w[2][0]).toUpperCase();
 }
-function tvBug(m){
-  if (!m) return `<div class="hud kpi tvbug"><div class="tv-top"><span class="meta">Último partido</span></div><div class="tv-bot">Todavía no hay partidos</div></div>`;
+function tvBug(m, btn){
+  btn = btn || "";
+  if (!m) return `<div class="hud kpi tvbug"><div class="tv-top"><span class="meta">Último partido</span>${btn}</div><div class="tv-bot">${matches.length ? "No hay partidos con estos filtros" : "Todavía no hay partidos"}</div></div>`;
   const cw = m.ganador === "Cabe";
   return `<div class="hud kpi tvbug" title="Último partido: ${esc(m.equipoCabe)} ${m.golesCabe}-${m.golesVerga} ${esc(m.equipoVerga)}">
-    <div class="tv-top"><span class="ft ${m.penales ? "pen" : ""}">${m.penales ? "PEN" : "FINAL"}</span><span class="meta">FIFA ${m.fifa} · ${esc(m.liga)}</span><span>#${m.n}</span></div>
+    <div class="tv-top"><span class="ft ${m.penales ? "pen" : ""}">${m.penales ? "PEN" : "FINAL"}</span><span class="meta">FIFA ${m.fifa} · ${esc(m.liga)}</span><span>#${m.n}</span>${btn}</div>
     <div class="tv-row">
       <span class="tv-team c">${crestHtml(m.equipoCabe)}<b>${esc(abbr(m.equipoCabe))}</b></span>
       <span class="tv-score"><b class="${cw ? "win" : ""}">${m.golesCabe}</b><i>–</i><b class="${cw ? "" : "win"}">${m.golesVerga}</b></span>
@@ -1410,13 +1515,13 @@ function renderRecords(L){
   const slides = buildRecords(L);
   const html = slides.length
     ? slides.map((h, i) => `<div class="rec" data-i="${i}" role="group" aria-roledescription="récord">${h}</div>`).join("")
-    : `<div class="rec on"><div class="rec-empty">${dashActive() ? "No hay partidos con estos filtros." : "Los récords aparecen cuando haya partidos cargados."}</div></div>`;
+    : `<div class="rec on"><div class="rec-empty">${matches.length ? "No hay partidos con estos filtros." : "Los récords aparecen cuando haya partidos cargados."}</div></div>`;
   if (html === recSig) return;
   recSig = html;
   host.innerHTML = html;
   wireCrests(host);
   $$(".ph img", host).forEach(img => img.addEventListener("error", () => { img.remove(); }, {once:true}));
-  const sc = $("#recScope"); if (sc) { sc.textContent = !dashActive() ? "Histórico" : (fifaSel !== "all" && !dashF.liga && !dashF.team && !dashF.last && !dashF.pen) ? `FIFA ${fifaSel}` : "Con filtros"; sc.title = dashActive() ? dashScope() : ""; }
+  const sc = $("#recScope"); if (sc) { const n = cfCount("recs"); sc.textContent = n ? "Con filtros" : (fifaSel === "all" ? "Histórico" : `FIFA ${fifaSel}`); sc.title = n ? cfSummary("recs") : ""; }
   const dots = $("#recDots"); dots.style.setProperty("--rec-dur", REC_MS / 1000 + "s");
   dots.innerHTML = slides.length > 1 ? slides.map((_, i) => `<button type="button" role="tab" aria-label="Récord ${i+1} de ${slides.length}"><i></i></button>`).join("") : "";
   dots.hidden = slides.length < 2;
@@ -1440,9 +1545,7 @@ function renderDash(){
   if (view !== "dash") return;
   const P = palette();
   const all = sorted(matches);
-  const L = dashFilter(all);
-  $("#dfCount").innerHTML = dashActive() ? `Mostrando <b>${L.length}</b> de ${all.length} partidos` : `<b>${all.length}</b> partidos en total`;
-  syncDashTools();
+  const L = fifaSel === "all" ? all : all.filter(m => String(m.fifa) === String(fifaSel));
   const N = L.length;
   const wC = L.filter(m => m.ganador === "Cabe").length, wV = N - wC;
   const gC = L.reduce((s,m)=>s+(+m.golesCabe||0),0), gV = L.reduce((s,m)=>s+(+m.golesVerga||0),0);
@@ -1461,45 +1564,58 @@ function renderDash(){
   $("#pcC").textContent = N ? `${Math.round(pc)}%` : ""; $("#pcV").textContent = N ? `${Math.round(100-pc)}%` : "";
   $("#liveTxt").textContent = matches.length ? `${matches.length} partidos jugados` : "Serie en juego";
 
-  const kpi = (k, v, n) => `<div class="hud kpi"><div class="k">${k}</div><div class="v">${v}</div>${n?`<div class="n">${n}</div>`:""}</div>`;
+  const kpi = (k, v, n, id) => `<div class="hud kpi">${id ? cfBtnHtml(id) : ""}<div class="k">${k}</div><div class="v">${v}</div>${n?`<div class="n">${n}</div>`:""}</div>`;
   const pair = (a,b) => `<span class="mini"><i class="dot c"></i>${a}</span><span class="sep">–</span><span class="mini">${b}<i class="dot v"></i></span>`;
-  const curTxt = st.last ? `<span class="mini"><i class="dot ${st.last==="Cabe"?"c":"v"}"></i>${st.last} · ${st.run}</span>` : "—";
+  const scopeTxt = id => cfCount(id) ? cfSummary(id) : "";
+  const Lk = cfList("kN", L), Lpk = cfList("kPen", L).filter(m => m.penales), stK = streaks(cfList("kRun", L)), Llk = cfList("kLast", L);
+  const pCk = Lpk.filter(m => m.ganador === "Cabe").length, pVk = Lpk.length - pCk;
+  const curTxt = stK.last ? `<span class="mini"><i class="dot ${stK.last==="Cabe"?"c":"v"}"></i>${stK.last} · ${stK.run}</span>` : "—";
   $("#kpis").innerHTML =
-    kpi("Partidos jugados", N, dashActive() ? dashScope() : "Todas las versiones") +
-    kpi("Penales ganados", pair(pC, pV), `${pens.length} empates definidos por penales`) +
-    kpi("Racha actual", curTxt, st.last ? (st.run === 1 ? "Ganó el último partido" : `Lleva ${st.run} victorias seguidas`) : "") +
-    tvBug(lastM);
-  $("#dwTot").textContent = N;
-  renderRecords(L);
+    kpi("Partidos jugados", Lk.length, scopeTxt("kN") || (fifaSel === "all" ? "Todas las versiones" : `Solo FIFA ${fifaSel}`), "kN") +
+    kpi("Penales ganados", pair(pCk, pVk), scopeTxt("kPen") || `${Lpk.length} empates definidos por penales`, "kPen") +
+    kpi("Racha actual", curTxt, scopeTxt("kRun") || (stK.last ? (stK.run === 1 ? "Ganó el último partido" : `Lleva ${stK.run} victorias seguidas`) : ""), "kRun") +
+    tvBug(Llk[Llk.length - 1], cfBtnHtml("kLast", "inl"));
+  const Lw = cfList("wins", L), wCw = Lw.filter(m => m.ganador === "Cabe").length, wVw = Lw.length - wCw;
+  $("#dwTot").textContent = Lw.length;
+  renderRecords(cfList("recs", L));
 
   wireCrests($("#kpis"));
-  const avgC = N ? gC/N : 0, avgV = N ? gV/N : 0, gmax = Math.max(gC, gV, 1);
+  const Lg = cfList("goles", L), Ng = Lg.length;
+  const gCg = Lg.reduce((s,m)=>s+(+m.golesCabe||0),0), gVg = Lg.reduce((s,m)=>s+(+m.golesVerga||0),0);
+  const avgC = Ng ? gCg/Ng : 0, avgV = Ng ? gVg/Ng : 0, gmax = Math.max(gCg, gVg, 1);
   const gRow = (who, cls, g, avg) => `
     <div class="who"><i class="dot ${cls}"></i>${who}</div>
     <div><div class="num">${g}</div><div class="bar"><i style="width:${g/gmax*100}%;background:linear-gradient(90deg,var(--${cls==="c"?"cabe":"verga"}),var(--${cls==="c"?"cabe":"verga"}-2))"></i></div>
       <div class="avg"><b>${dec(avg)}</b> goles por partido</div></div>`;
-  $("#goals").innerHTML = gRow("Cabe","c",gC,avgC) + gRow("Verga","v",gV,avgV);
-  const gd = gC - gV;
+  $("#goals").innerHTML = gRow("Cabe","c",gCg,avgC) + gRow("Verga","v",gVg,avgV);
+  const gd = gCg - gVg;
   $("#gdiff").innerHTML = `
     <div><div class="k">Diferencia de gol</div><div class="v">${gd === 0 ? "0" : `<i class="dot ${gd>0?"c":"v"}"></i>+${Math.abs(gd)}`}</div><div class="n">${gd === 0 ? "Están parejos" : `A favor de ${gd>0?"Cabe":"Verga"}`}</div></div>
-    <div><div class="k">Total convertidos</div><div class="v">${gC+gV}</div><div class="n">${dec(N ? (gC+gV)/N : 0)} por partido</div></div>`;
+    <div><div class="k">Total convertidos</div><div class="v">${gCg+gVg}</div><div class="n">${dec(Ng ? (gCg+gVg)/Ng : 0)} por partido</div></div>`;
 
-  const smax = Math.max(st.res.Cabe.max, st.res.Verga.max, 1);
+  const stR = streaks(cfList("racha", L));
+  const smax = Math.max(stR.res.Cabe.max, stR.res.Verga.max, 1);
   const sRow = (who, cls, v) => `<div class="sb"><span class="who"><i class="dot ${cls}"></i>${who}</span><span class="track">${Array.from({length:smax}, (_,i)=>`<i class="${i<v?"on "+cls:""}"></i>`).join("")}</span><span class="val">${v}</span></div>`;
-  $("#streaks").innerHTML = sRow("Cabe","c",st.res.Cabe.max) + sRow("Verga","v",st.res.Verga.max);
+  $("#streaks").innerHTML = sRow("Cabe","c",stR.res.Cabe.max) + sRow("Verga","v",stR.res.Verga.max);
 
-  teamRows($("#teamW"), L, winnerTeam, m => m.ganador, "Ningún equipo tiene 2 o más victorias todavía.");
-  teamRows($("#teamL"), L, loserTeam, m => m.ganador === "Cabe" ? "Verga" : "Cabe", "Ningún equipo tiene 2 o más derrotas todavía.");
+  const tOpt = id => ({who:cfGet(id,"who"), min:cfGet(id,"min"), top:cfGet(id,"top")});
+  const tSub = (id, w) => { const o = tOpt(id); return `${o.min === "1" ? `1 o más ${w}` : `${o.min} o más ${w}`}${o.who ? ` de ${o.who}` : ""}`; };
+  $("#twSub").textContent = `${tSub("tw","victorias")} · tocá un equipo para ver su ficha`;
+  $("#tlSub").textContent = `${tSub("tl","derrotas")} · color = quién perdió con ese equipo`;
+  teamRows($("#teamW"), cfList("tw", L), winnerTeam, m => m.ganador, `Ningún equipo tiene ${tSub("tw","victorias")}${cfCount("tw") ? " con estos filtros" : " todavía"}.`, tOpt("tw"));
+  teamRows($("#teamL"), cfList("tl", L), loserTeam, m => m.ganador === "Cabe" ? "Verga" : "Cabe", `Ningún equipo tiene ${tSub("tl","derrotas")}${cfCount("tl") ? " con estos filtros" : " todavía"}.`, tOpt("tl"));
 
   const sc = new Map();
-  L.forEach(m => (m.goleadores||[]).forEach(g => { const k = key(g); if (!k) return; const e = sc.get(k) || {name:titleCase(g), n:0}; e.n++; sc.set(k, e); }));
-  const list = Array.from(sc.values()).sort((a,b)=>b.n-a.n || a.name.localeCompare(b.name));
-  $("#golSub").textContent = `${list.length} jugadores · ${list.reduce((s,e)=>s+e.n,0)} goles con autor registrado`;
+  cfList("gol", L).forEach(m => (m.goleadores||[]).forEach(g => { const k = key(g); if (!k) return; const e = sc.get(k) || {name:titleCase(g), n:0}; e.n++; sc.set(k, e); }));
+  const listAll = Array.from(sc.values()).sort((a,b)=>b.n-a.n || a.name.localeCompare(b.name));
+  const list = cfGet("gol","top") ? listAll.slice(0, +cfGet("gol","top")) : listAll;
+  $("#golSub").textContent = `${listAll.length} jugadores · ${listAll.reduce((s,e)=>s+e.n,0)} goles con autor registrado`;
   let pos = 0, prev = null;
   $("#scorers").innerHTML = list.length ? list.map((e,i) => { if (e.n !== prev) { pos = i+1; prev = e.n; } return `<tr class="${pos===1?"top1":""}" data-player="${esc(e.name)}" tabindex="0"><td class="pos">${pos}</td><td><div class="pl">${photoHtml(e.name, "md")}<div class="pn"><span class="nm">${esc(e.name)}</span><div class="gbar"><i style="width:${Math.round(e.n / (list[0] ? list[0].n : 1) * 100)}%"></i></div></div></div></td><td class="g">${e.n}</td></tr>`; }).join("")
-    : `<tr><td colspan="3" class="empty">Sin goleadores cargados.</td></tr>`;
+    : `<tr><td colspan="3" class="empty">${cfCount("gol") ? "Sin goleadores con estos filtros." : "Sin goleadores cargados."}</td></tr>`;
 
-  renderReg(L);
+  renderReg(cfList("reg", L));
+  cfSync();
 
   if (!window.Chart) return;
   Chart.defaults.font.family = FONT;
@@ -1507,8 +1623,9 @@ function renderDash(){
   const bo = baseOpts(P);
   const gC_ = grad(P.c, P.c2), gV_ = grad(P.v, P.v2), gCx = grad(P.c, P.c2, "x"), gVx = grad(P.v, P.v2, "x");
 
+  const Le = cfList("evo", L);
   let cc=0, cv=0; const evC=[], evV=[], labels=[];
-  L.forEach(m => { if (m.ganador==="Cabe") cc++; else cv++; evC.push(cc); evV.push(cv); labels.push("#"+m.n); });
+  Le.forEach(m => { if (m.ganador==="Cabe") cc++; else cv++; evC.push(cc); evV.push(cv); labels.push("#"+m.n); });
   makeChart("chEvo", {type:"line", data:{labels, datasets:[
       {label:"Cabe", data:evC, borderColor:gCx, backgroundColor:fillGrad("59,140,242"), fill:"origin", borderWidth:2.5*SC(), pointRadius:0, pointHoverRadius:5*SC(), pointHoverBackgroundColor:P.c2, tension:.2},
       {label:"Verga", data:evV, borderColor:gVx, backgroundColor:fillGrad("243,106,44"), fill:"origin", borderWidth:2.5*SC(), pointRadius:0, pointHoverRadius:5*SC(), pointHoverBackgroundColor:P.v2, tension:.2}]},
@@ -1516,8 +1633,8 @@ function renderDash(){
       x:{grid:{display:false}, border:{color:"rgba(220,255,236,.25)"}, ticks:{color:P.ink2, maxTicksLimit:10, autoSkip:true, maxRotation:0, font:{family:DFONT,size:11*SC()}}},
       y:{beginAtZero:true, grid:{color:CHALK, drawTicks:false}, border:{display:false}, ticks:{color:P.ink2, precision:0, padding:6, font:{family:DFONT,size:11*SC()}}}},
       plugins:{...bo.plugins, tooltip:{...bo.plugins.tooltip, callbacks:{
-        title: it => { const m = L[it[0].dataIndex]; return `Partido ${m.n} · FIFA ${m.fifa}`; },
-        afterTitle: it => { const m = L[it[0].dataIndex]; return `${m.equipoCabe} ${m.golesCabe}-${m.golesVerga} ${m.equipoVerga}${m.penales?" (pen. "+m.ganador+")":""}`; },
+        title: it => { const m = Le[it[0].dataIndex]; return `Partido ${m.n} · FIFA ${m.fifa}`; },
+        afterTitle: it => { const m = Le[it[0].dataIndex]; return `${m.equipoCabe} ${m.golesCabe}-${m.golesVerga} ${m.equipoVerga}${m.penales?" (pen. "+m.ganador+")":""}`; },
         label: c => ` ${c.dataset.label}: ${c.parsed.y} victorias`}}}}});
 
   const donut = (id, a, b, what) => makeChart(id, {type:"doughnut", data:{labels:["Cabe","Verga"], datasets:[{data:[a,b], backgroundColor:(()=>{ const a_=grad(P.c, P.c2), b_=grad(P.v, P.v2); return ctx => ctx.dataIndex === 0 ? a_(ctx) : b_(ctx); })(), borderColor:"#0c2b20", borderWidth:3, hoverOffset:4}]},
@@ -1525,19 +1642,22 @@ function renderDash(){
     options:{...bo, cutout:"70%", plugins:{...bo.plugins, legend:{display:true, position:"bottom", labels:{color:P.ink, usePointStyle:true, pointStyle:"rectRot", boxWidth:8*SC(), boxHeight:8*SC(), padding:(innerWidth < 640 ? 8 : 14)*SC(), font:{family:FONT,size:(innerWidth < 640 ? 11 : 13)*SC()},
       generateLabels: ch => ch.data.labels.map((l,i) => { const d=ch.data.datasets[0].data, t=d[0]+d[1]; return {text:`${l}  ${d[i]}${t?` (${Math.round(d[i]/t*100)}%)`:""}`, fillStyle:[P.c,P.v][i], strokeStyle:[P.c,P.v][i], fontColor:P.ink, pointStyle:"rectRot", index:i}; })}},
       tooltip:{...bo.plugins.tooltip, callbacks:{label:c => { const t=a+b; return ` ${c.label}: ${c.parsed} ${what} (${t?Math.round(c.parsed/t*100):0}%)`; }}}}}});
-  donut("chWins", wC, wV, "victorias");
+  donut("chWins", wCw, wVw, "victorias");
 
-  const vs = Array.from(new Set(L.map(m=>m.fifa))).sort((a,b)=>a-b);
+  const Lf = cfList("fifa", L);
+  const vs = Array.from(new Set(Lf.map(m=>m.fifa))).sort((a,b)=>a-b);
   makeChart("chFifa", {type:"bar", data:{labels:vs.map(v=>"FIFA "+v), datasets:[
-      barDs("Cabe", vs.map(v=>L.filter(m=>m.fifa===v&&m.ganador==="Cabe").length), gC_),
-      barDs("Verga", vs.map(v=>L.filter(m=>m.fifa===v&&m.ganador==="Verga").length), gV_)]},
+      barDs("Cabe", vs.map(v=>Lf.filter(m=>m.fifa===v&&m.ganador==="Cabe").length), gC_),
+      barDs("Verga", vs.map(v=>Lf.filter(m=>m.fifa===v&&m.ganador==="Verga").length), gV_)]},
     options:{...bo, scales:axes(P,false), plugins:{...bo.plugins, tooltip:{...bo.plugins.tooltip, mode:"index", intersect:false}}}});
 
-  const ligas = Array.from(countBy(L, m=>m.liga)).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0])).map(x=>x[0]);
+  const Ll = cfList("liga", L);
+  const ligasAll = Array.from(countBy(Ll, m=>m.liga)).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0])).map(x=>x[0]);
+  const ligas = cfGet("liga","top") ? ligasAll.slice(0, +cfGet("liga","top")) : ligasAll;
   $("#cvLiga").style.setProperty("--liga-h", (Math.max(160, ligas.length*29 + 40) / 16) + "rem");
   makeChart("chLiga", {type:"bar", data:{labels:ligas, datasets:[
-      barDs("Cabe", ligas.map(l=>L.filter(m=>m.liga===l&&m.ganador==="Cabe").length), gCx, {maxBarThickness:12*SC()}),
-      barDs("Verga", ligas.map(l=>L.filter(m=>m.liga===l&&m.ganador==="Verga").length), gVx, {maxBarThickness:12*SC()})]},
+      barDs("Cabe", ligas.map(l=>Ll.filter(m=>m.liga===l&&m.ganador==="Cabe").length), gCx, {maxBarThickness:12*SC()}),
+      barDs("Verga", ligas.map(l=>Ll.filter(m=>m.liga===l&&m.ganador==="Verga").length), gVx, {maxBarThickness:12*SC()})]},
     options:{...bo, indexAxis:"y", scales:axes(P,true), plugins:{...bo.plugins, tooltip:{...bo.plugins.tooltip, mode:"index", intersect:false}}}});
   drawRadar(P, bo);
   setTimeout(() => { chartsAnimated = true; }, 600);
@@ -2267,7 +2387,7 @@ function renderLog(){
 setInterval(() => { if (view === "log") renderLog(); }, 60000);
 
 /* ---------- Indicador de versión (verde = al día, rojo = hay versión nueva) ---------- */
-const APP_VERSION = "2026.11.16-1315";
+const APP_VERSION = "2026.11.16-1610";
 function setupVersion(){
   if (!window.PF_STANDALONE) return;
   const b = $("#verBtn"); b.hidden = false;
